@@ -1,0 +1,2 @@
+http://download.tensorflow.org/models/tflite_11_05_08/mobilenet_v2_1.0_224.tgz
+cdda800c237d73ff5e808816be75952c

@@ -1,0 +1,2 @@
+http://download.tensorflow.org/models/mobilenet_v1_2018_02_22/mobilenet_v1_0.5_128.tgz
+1950d02e12e2c85613c6f973b1213d1b
