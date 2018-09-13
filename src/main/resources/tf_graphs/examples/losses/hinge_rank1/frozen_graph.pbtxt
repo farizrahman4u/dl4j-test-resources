@@ -1,181 +1,43 @@
 node {
-  name: "random_uniform/shape"
+  name: "Variable"
   op: "Const"
   attr {
     key: "dtype"
     value {
-      type: DT_INT32
+      type: DT_FLOAT
     }
   }
   attr {
     key: "value"
     value {
       tensor {
-        dtype: DT_INT32
+        dtype: DT_FLOAT
         tensor_shape {
           dim {
-            size: 1
+            size: 5
           }
         }
-        int_val: 5
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200?\000\000\000\000"
       }
     }
   }
 }
 node {
-  name: "random_uniform/min"
-  op: "Const"
+  name: "Variable/read"
+  op: "Identity"
+  input: "Variable"
   attr {
-    key: "dtype"
+    key: "T"
     value {
       type: DT_FLOAT
     }
   }
   attr {
-    key: "value"
+    key: "_class"
     value {
-      tensor {
-        dtype: DT_FLOAT
-        tensor_shape {
-        }
-        float_val: 0.0
+      list {
+        s: "loc:@Variable"
       }
-    }
-  }
-}
-node {
-  name: "random_uniform/max"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_FLOAT
-        tensor_shape {
-        }
-        float_val: 1.0
-      }
-    }
-  }
-}
-node {
-  name: "random_uniform/RandomUniform"
-  op: "RandomUniform"
-  input: "random_uniform/shape"
-  attr {
-    key: "T"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "dtype"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "seed"
-    value {
-      i: 1
-    }
-  }
-  attr {
-    key: "seed2"
-    value {
-      i: 3
-    }
-  }
-}
-node {
-  name: "random_uniform/sub"
-  op: "Sub"
-  input: "random_uniform/max"
-  input: "random_uniform/min"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "random_uniform/mul"
-  op: "Mul"
-  input: "random_uniform/RandomUniform"
-  input: "random_uniform/sub"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "random_uniform"
-  op: "Add"
-  input: "random_uniform/mul"
-  input: "random_uniform/min"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "Less/y"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_FLOAT
-        tensor_shape {
-        }
-        float_val: 0.5
-      }
-    }
-  }
-}
-node {
-  name: "Less"
-  op: "Less"
-  input: "random_uniform"
-  input: "Less/y"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "Cast"
-  op: "Cast"
-  input: "Less"
-  attr {
-    key: "DstT"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "SrcT"
-    value {
-      type: DT_BOOL
     }
   }
 }
@@ -198,7 +60,7 @@ node {
             size: 5
           }
         }
-        tensor_content: "\014 \013?\004-[?\314\027x?\200\322\004\275X\302\222>"
+        tensor_content: "\220\277\353\276X\374\227>\320\303\277>L+\r\277DAF?"
       }
     }
   }
@@ -310,7 +172,7 @@ node {
   name: "hinge_loss/mul"
   op: "Mul"
   input: "hinge_loss/mul/x"
-  input: "Cast"
+  input: "Variable/read"
   attr {
     key: "T"
     value {
@@ -370,7 +232,7 @@ node {
   op: "NoOp"
 }
 node {
-  name: "hinge_loss/ToFloat_3/x"
+  name: "hinge_loss/ToFloat_2/x"
   op: "Const"
   input: "^hinge_loss/assert_broadcastable/static_scalar_check_success"
   attr {
@@ -395,7 +257,7 @@ node {
   name: "hinge_loss/Mul_2"
   op: "Mul"
   input: "hinge_loss/Relu"
-  input: "hinge_loss/ToFloat_3/x"
+  input: "hinge_loss/ToFloat_2/x"
   attr {
     key: "T"
     value {
@@ -477,7 +339,7 @@ node {
 node {
   name: "hinge_loss/num_present/Equal"
   op: "Equal"
-  input: "hinge_loss/ToFloat_3/x"
+  input: "hinge_loss/ToFloat_2/x"
   input: "hinge_loss/num_present/Equal/y"
   attr {
     key: "T"

@@ -1,181 +1,49 @@
 node {
-  name: "random_uniform/shape"
+  name: "Variable"
   op: "Const"
   attr {
     key: "dtype"
     value {
-      type: DT_INT32
+      type: DT_FLOAT
     }
   }
   attr {
     key: "value"
     value {
       tensor {
-        dtype: DT_INT32
+        dtype: DT_FLOAT
         tensor_shape {
+          dim {
+            size: 2
+          }
           dim {
             size: 3
           }
+          dim {
+            size: 4
+          }
         }
-        tensor_content: "\002\000\000\000\003\000\000\000\004\000\000\000"
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200?\000\000\000\000\000\000\200?\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200?\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200?\000\000\200?\000\000\200?\000\000\200?\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200?\000\000\000\000\000\000\200?"
       }
     }
   }
 }
 node {
-  name: "random_uniform/min"
-  op: "Const"
+  name: "Variable/read"
+  op: "Identity"
+  input: "Variable"
   attr {
-    key: "dtype"
+    key: "T"
     value {
       type: DT_FLOAT
     }
   }
   attr {
-    key: "value"
+    key: "_class"
     value {
-      tensor {
-        dtype: DT_FLOAT
-        tensor_shape {
-        }
-        float_val: 0.0
+      list {
+        s: "loc:@Variable"
       }
-    }
-  }
-}
-node {
-  name: "random_uniform/max"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_FLOAT
-        tensor_shape {
-        }
-        float_val: 1.0
-      }
-    }
-  }
-}
-node {
-  name: "random_uniform/RandomUniform"
-  op: "RandomUniform"
-  input: "random_uniform/shape"
-  attr {
-    key: "T"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "dtype"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "seed"
-    value {
-      i: 1
-    }
-  }
-  attr {
-    key: "seed2"
-    value {
-      i: 3
-    }
-  }
-}
-node {
-  name: "random_uniform/sub"
-  op: "Sub"
-  input: "random_uniform/max"
-  input: "random_uniform/min"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "random_uniform/mul"
-  op: "Mul"
-  input: "random_uniform/RandomUniform"
-  input: "random_uniform/sub"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "random_uniform"
-  op: "Add"
-  input: "random_uniform/mul"
-  input: "random_uniform/min"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "Less/y"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_FLOAT
-        tensor_shape {
-        }
-        float_val: 0.5
-      }
-    }
-  }
-}
-node {
-  name: "Less"
-  op: "Less"
-  input: "random_uniform"
-  input: "Less/y"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "Cast"
-  op: "Cast"
-  input: "Less"
-  attr {
-    key: "DstT"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "SrcT"
-    value {
-      type: DT_BOOL
     }
   }
 }
@@ -204,7 +72,7 @@ node {
             size: 4
           }
         }
-        tensor_content: "\014 \013?\004-[?\314\027x?\200\322\004\275X\302\222>\000\032U>x\272\231>H\267\005?\270a\005?@\210W\276\340\004f?\244U8?\300F\023?\260\371I?\340G\224\275\340\336\334>\300\244\276\275\350n\034?\224\245j?@\266p=T\326*?8\303z\277 LN\276P\0242\277"
+        tensor_content: "\220\277\353\276X\374\227>\320\303\277>L+\r\277DAF?\220\032\235>\234\330S\277D\325e?\220\272\021\276\034\n%?\260\273(\277\230\331\252>,\304o\277\334\256t\277P-\234>\320YE>\300\355W>0i\275\276\360\322i\277 \322\316=(\235U\277\300+@?P\334\277>\310}\323>"
       }
     }
   }
@@ -253,7 +121,7 @@ node {
             size: 4
           }
         }
-        tensor_content: "\270\263q?\342~\030?\026\355]?\374O\263>\346\217\002?|;:?\244|\360>\260}H?\340H\032>\324\r<?`\324|=\202\201)?\000\361\013=D\313\246>\212\350\004?\356\221=?`\0057>\330\331\027>By!?@p\036>\310P<>8\006y>\022\352F?Nw%?"
+        tensor_content: "l\306\333>8\301\230>\206\352c?JRE?p\006\275=\320\334\257=\360\243\271=\260\226\244=\000/\313>\350\213\005?\244\243\037?\200)l<\334\230\211>\034\032\002?\332cI?\230\275\013>\000\3072>\372\027\032?(\026<>\266\326i?,\303\'?\010O`>\332<\016?.\326$?"
       }
     }
   }
@@ -365,7 +233,7 @@ node {
   name: "hinge_loss/mul"
   op: "Mul"
   input: "hinge_loss/mul/x"
-  input: "Cast"
+  input: "Variable/read"
   attr {
     key: "T"
     value {
