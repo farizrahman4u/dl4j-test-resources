@@ -1,0 +1,2 @@
+https://storage.googleapis.com/download.tensorflow.org/models/tflite/model_zoo/upload_20180427/inception_v4_2018_04_27.tgz
+97da95494e4a4d755cf79d636c726bcb

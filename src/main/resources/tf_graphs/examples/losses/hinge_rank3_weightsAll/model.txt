@@ -180,6 +180,95 @@ node {
   }
 }
 node {
+  name: "Variable"
+  op: "VariableV2"
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 2
+        }
+        dim {
+          size: 3
+        }
+        dim {
+          size: 4
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "Variable/Assign"
+  op: "Assign"
+  input: "Variable"
+  input: "Cast"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "Variable/read"
+  op: "Identity"
+  input: "Variable"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable"
+      }
+    }
+  }
+}
+node {
   name: "random_uniform_1/shape"
   op: "Const"
   attr {
@@ -270,7 +359,7 @@ node {
   attr {
     key: "seed2"
     value {
-      i: 13
+      i: 16
     }
   }
 }
@@ -490,7 +579,7 @@ node {
   attr {
     key: "seed2"
     value {
-      i: 23
+      i: 26
     }
   }
 }
@@ -707,7 +796,7 @@ node {
   name: "hinge_loss/mul"
   op: "Mul"
   input: "hinge_loss/mul/x"
-  input: "Cast"
+  input: "Variable/read"
   attr {
     key: "T"
     value {
@@ -1385,9 +1474,10 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 2
+            size: 3
           }
         }
+        string_val: "Variable"
         string_val: "in_1"
         string_val: "in_2"
       }
@@ -1410,9 +1500,10 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 2
+            size: 3
           }
         }
+        string_val: ""
         string_val: ""
         string_val: ""
       }
@@ -1425,12 +1516,14 @@ node {
   input: "save/Const"
   input: "save/SaveV2/tensor_names"
   input: "save/SaveV2/shape_and_slices"
+  input: "Variable"
   input: "in_1"
   input: "in_2"
   attr {
     key: "dtypes"
     value {
       list {
+        type: DT_FLOAT
         type: DT_FLOAT
         type: DT_FLOAT
       }
@@ -1474,9 +1567,10 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 2
+            size: 3
           }
         }
+        string_val: "Variable"
         string_val: "in_1"
         string_val: "in_2"
       }
@@ -1500,9 +1594,10 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 2
+            size: 3
           }
         }
+        string_val: ""
         string_val: ""
         string_val: ""
       }
@@ -1522,6 +1617,7 @@ node {
       list {
         type: DT_FLOAT
         type: DT_FLOAT
+        type: DT_FLOAT
       }
     }
   }
@@ -1529,8 +1625,40 @@ node {
 node {
   name: "save/Assign"
   op: "Assign"
-  input: "in_1"
+  input: "Variable"
   input: "save/RestoreV2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "save/Assign_1"
+  op: "Assign"
+  input: "in_1"
+  input: "save/RestoreV2:1"
   attr {
     key: "T"
     value {
@@ -1559,10 +1687,10 @@ node {
   }
 }
 node {
-  name: "save/Assign_1"
+  name: "save/Assign_2"
   op: "Assign"
   input: "in_2"
-  input: "save/RestoreV2:1"
+  input: "save/RestoreV2:2"
   attr {
     key: "T"
     value {
@@ -1595,10 +1723,12 @@ node {
   op: "NoOp"
   input: "^save/Assign"
   input: "^save/Assign_1"
+  input: "^save/Assign_2"
 }
 node {
   name: "init"
   op: "NoOp"
+  input: "^Variable/Assign"
   input: "^in_1/Assign"
   input: "^in_2/Assign"
 }

@@ -228,13 +228,37 @@ node {
   attr {
     key: "compute_uv"
     value {
-      b: false
+      b: true
     }
   }
   attr {
     key: "full_matrices"
     value {
       b: true
+    }
+  }
+}
+node {
+  name: "add"
+  op: "Add"
+  input: "Svd"
+  input: "Svd:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "add_1"
+  op: "Add"
+  input: "add"
+  input: "Svd:2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
     }
   }
 }
