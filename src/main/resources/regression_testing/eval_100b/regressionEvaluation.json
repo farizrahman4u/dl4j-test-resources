@@ -1,0 +1,16 @@
+{
+  "@class" : "org.deeplearning4j.eval.RegressionEvaluation",
+  "initialized" : true,
+  "columnNames" : [ "col_0", "col_1", "col_2" ],
+  "precision" : 5,
+  "exampleCountPerColumn" : [ 150.0, 150.0, 150.0 ],
+  "labelsSumPerColumn" : [ 50.0, 50.0, 50.0 ],
+  "sumSquaredErrorsPerColumn" : [ 9.807138442993164, 25.77743148803711, 15.479133605957031 ],
+  "sumAbsErrorsPerColumn" : [ 32.86679458618164, 51.935325622558594, 40.46384048461914 ],
+  "currentMean" : [ 0.3333333432674408, 0.3333333432674408, 0.3333333432674408 ],
+  "currentPredictionMean" : [ 0.3372257947921753, 0.30827948451042175, 0.3544948101043701 ],
+  "sumOfProducts" : [ 33.85853576660156, 22.153303146362305, 31.35517692565918 ],
+  "sumSquaredLabels" : [ 50.0, 50.0, 50.0 ],
+  "sumSquaredPredicted" : [ 27.524200439453125, 20.08403778076172, 28.189495086669922 ],
+  "sumLabels" : [ 50.0, 50.0, 50.0 ]
+}
