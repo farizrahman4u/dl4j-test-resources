@@ -1,0 +1,9 @@
+scalar float32
+someweight.0 float32
+someweight____read.0 float32
+add.0 float32
+Const.0 int32
+Sum.0 float32
+add_1.0 float32
+output____reduction_indices.0 int32
+output.0 float32

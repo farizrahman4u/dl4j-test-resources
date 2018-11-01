@@ -1,0 +1,6 @@
+scalarA int32
+scalarB int32
+stack.0 int32
+Variable.0 float32
+Variable____read.0 float32
+output.0 float32

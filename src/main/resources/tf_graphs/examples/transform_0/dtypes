@@ -1,0 +1,17 @@
+input_0 float32
+input_1 float32
+add1.0 float32
+maximum2.0 float32
+minimum3.0 float32
+abs4.0 float32
+cos5.0 float32
+acos6.0 float32
+add7.0 float32
+maximum8.0 float32
+minimum9.0 float32
+abs10.0 float32
+ceil11.0 float32
+minimum12.0 float32
+exp13.0 float32
+log14.0 float32
+output.0 float32

@@ -1,0 +1,16 @@
+input_0 float32
+input_1 float32
+Variable.0 float32
+Variable____read.0 float32
+Const.0 int32
+Sum.0 float32
+Less.0 bool
+cond____pred_id.0 bool
+cond____truefn____Switch.1 float32
+cond____truefn____Switch_1.1 float32
+cond____truefn.0 float32
+cond____falsefn____Switch.1 float32
+cond____falsefn____Switch_1.1 float32
+cond____Merge.0 float32
+cond____Merge.1 int32
+output.0 float32

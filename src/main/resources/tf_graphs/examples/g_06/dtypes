@@ -1,0 +1,10 @@
+input_1 float64
+input_2 float64
+in0.0 float64
+in0____read.0 float64
+Sum____reduction_indices.0 int32
+Sum.0 float64
+Const.0 int32
+Max.0 float64
+Add.0 float64
+output.0 float64

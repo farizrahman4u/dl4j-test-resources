@@ -1,0 +1,10 @@
+in_0.0 float32
+in_0____read.0 float32
+sufficient_statistics____Const.0 float32
+sufficient_statistics____shift.0 float32
+sufficient_statistics____Sub.0 float32
+sufficient_statistics____SquaredDifference.0 float32
+sufficient_statistics____mean_ss____reduction_indices.0 int32
+sufficient_statistics____mean_ss.0 float32
+sufficient_statistics____var_ss____reduction_indices.0 int32
+sufficient_statistics____var_ss.0 float32

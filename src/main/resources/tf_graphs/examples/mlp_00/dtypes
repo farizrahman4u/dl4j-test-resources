@@ -1,0 +1,15 @@
+input float64
+l0W.0 float64
+l0W____read.0 float64
+l1W.0 float64
+l1W____read.0 float64
+l0B.0 float64
+l0B____read.0 float64
+l1B.0 float64
+l1B____read.0 float64
+MatMul.0 float64
+l0Preout.0 float64
+l0Out.0 float64
+MatMul_1.0 float64
+l1PreOut.0 float64
+output.0 float64

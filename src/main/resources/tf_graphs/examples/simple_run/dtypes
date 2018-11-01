@@ -1,0 +1,6 @@
+Variable.0 int32
+Variable____read.0 int32
+output____on_value.0 float32
+output____depth.0 int32
+output____off_value.0 float32
+output.0 float32

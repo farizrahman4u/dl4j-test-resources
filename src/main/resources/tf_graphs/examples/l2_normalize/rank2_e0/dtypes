@@ -1,0 +1,9 @@
+in_0.0 float32
+in_0____read.0 float32
+l2_normalize____Square.0 float32
+l2_normalize____Sum____reduction_indices.0 int32
+l2_normalize____Sum.0 float32
+l2_normalize____Maximum____y.0 float32
+l2_normalize____Maximum.0 float32
+l2_normalize____Rsqrt.0 float32
+l2_normalize.0 float32

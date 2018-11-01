@@ -1,0 +1,6 @@
+in_0.0 float32
+in_0____read.0 float32
+in_1.0 float32
+in_1____read.0 float32
+histogram_fixed_width____nbins.0 int32
+histogram_fixed_width.0 int32

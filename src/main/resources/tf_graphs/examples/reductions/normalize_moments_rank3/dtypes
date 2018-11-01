@@ -1,0 +1,11 @@
+in_0.0 float32
+in_0____read.0 float32
+in_1.0 float32
+in_1____read.0 float32
+in_2.0 float32
+in_2____read.0 float32
+normalize____divisor.0 float32
+normalize____mean.0 float32
+normalize____Mul.0 float32
+normalize____Square.0 float32
+normalize____variance.0 float32
