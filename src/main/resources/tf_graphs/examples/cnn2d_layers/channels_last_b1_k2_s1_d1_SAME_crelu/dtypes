@@ -1,0 +1,12 @@
+in_0.0 float32
+in_0____read.0 float32
+conv2d____kernel.0 float32
+conv2d____kernel____read.0 float32
+conv2d____bias.0 float32
+conv2d____bias____read.0 float32
+conv2d____Conv2D.0 float32
+conv2d____BiasAdd.0 float32
+conv2d____CRelu____Neg.0 float32
+conv2d____CRelu____axis.0 int32
+conv2d____CRelu.0 float32
+conv2d____CRelu____Relu.0 float32

@@ -1,0 +1,5 @@
+input float64
+bias.0 float32
+bias____read.0 float32
+Cast.0 float64
+output.0 float64

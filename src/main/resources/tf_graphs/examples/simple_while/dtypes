@@ -1,0 +1,6 @@
+loop_var.0 int32
+loop_var____read.0 int32
+while____Enter.0 int32
+while____Switch.0 int32
+while____Exit.0 int32
+output.0 int32

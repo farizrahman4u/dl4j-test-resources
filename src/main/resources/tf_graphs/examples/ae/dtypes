@@ -1,0 +1,15 @@
+input float32
+Variable.0 float32
+Variable____read.0 float32
+Variable_1.0 float32
+Variable_1____read.0 float32
+Variable_4.0 float32
+Variable_4____read.0 float32
+Variable_5.0 float32
+Variable_5____read.0 float32
+MatMul.0 float32
+Add.0 float32
+Sigmoid.0 float32
+MatMul_1.0 float32
+Add_1.0 float32
+output.0 float32

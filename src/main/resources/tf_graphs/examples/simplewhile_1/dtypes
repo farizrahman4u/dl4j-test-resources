@@ -1,0 +1,13 @@
+input_0 float32
+input_1 float32
+Variable.0 float32
+Variable____read.0 float32
+while____Enter.0 float32
+while____Enter_1.0 float32
+while____Switch.0 float32
+while____Switch_1.0 float32
+while____Add____Enter.0 float32
+while____Exit.0 float32
+while____Exit_1.0 float32
+Add.0 float32
+output.0 float32

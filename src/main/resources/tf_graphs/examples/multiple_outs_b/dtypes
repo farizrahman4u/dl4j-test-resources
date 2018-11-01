@@ -1,0 +1,9 @@
+input_0 float32
+Variable.0 float32
+Variable____read.0 float32
+add.0 float32
+outputA.0 float32
+outputA.1 float32
+Add_1.0 float32
+outputB.0 float32
+outputB.1 float32

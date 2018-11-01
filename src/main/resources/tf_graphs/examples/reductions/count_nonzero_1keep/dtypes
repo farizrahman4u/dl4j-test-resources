@@ -1,0 +1,7 @@
+in_0.0 float32
+in_0____read.0 float32
+count_nonzero-1____zeros.0 float32
+count_nonzero-1____NotEqual.0 bool
+count_nonzero-1____ToInt64.0 int64
+count_nonzero-1____Sum____reduction_indices.0 int32
+count_nonzero-1____Sum.0 int64

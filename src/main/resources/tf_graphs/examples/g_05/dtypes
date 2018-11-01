@@ -1,0 +1,10 @@
+input_1 float64
+input_2 float64
+in0.0 float64
+in0____read.0 float64
+GatherV2____indices.0 int32
+GatherV2____axis.0 int32
+GatherV2.0 float64
+GatherNd____indices.0 int32
+GatherNd.0 float64
+output.0 float64
