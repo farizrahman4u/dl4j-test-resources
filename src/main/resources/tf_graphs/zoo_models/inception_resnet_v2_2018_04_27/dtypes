@@ -1,0 +1,2 @@
+input:0 float32
+InceptionResnetV2/AuxLogits/Logits/BiasAdd:0 float32

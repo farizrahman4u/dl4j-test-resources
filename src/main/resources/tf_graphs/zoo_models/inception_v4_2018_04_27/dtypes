@@ -1,0 +1,2 @@
+input:0 float32
+InceptionV4/Logits/Predictions:0 float32

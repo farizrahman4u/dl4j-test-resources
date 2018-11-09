@@ -1,0 +1,3 @@
+Placeholder:0 float32
+ArgMax:0 int64
+softmax_tensor:0 float32
