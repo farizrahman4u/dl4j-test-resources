@@ -1,0 +1,2 @@
+input:0 float32
+MobilenetV2/Predictions/Reshape_1:0 float32

@@ -1,0 +1,2 @@
+input:0 float32
+final_layer/predictions:0 float32
