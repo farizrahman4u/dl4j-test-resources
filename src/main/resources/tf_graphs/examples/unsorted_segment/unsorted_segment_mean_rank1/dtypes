@@ -1,0 +1,17 @@
+UnsortedSegmentMean/truediv.0 float32
+in_0.0 float32
+in_0____read.0 float32
+in_1.0 int32
+in_1____read.0 int32
+UnsortedSegmentMean____Shape.0 int32
+UnsortedSegmentMean____ones____Const.0 float32
+UnsortedSegmentMean____ones.0 float32
+UnsortedSegmentMean____UnsortedSegmentSum____num_segments.0 int32
+UnsortedSegmentMean____UnsortedSegmentSum.0 float32
+UnsortedSegmentMean____Reshape____shape.0 int32
+UnsortedSegmentMean____Reshape.0 float32
+UnsortedSegmentMean____Maximum____y.0 float32
+UnsortedSegmentMean____Maximum.0 float32
+UnsortedSegmentMean____UnsortedSegmentSum_1____num_segments.0 int32
+UnsortedSegmentMean____UnsortedSegmentSum_1.0 float32
+UnsortedSegmentMean____truediv.0 float32
