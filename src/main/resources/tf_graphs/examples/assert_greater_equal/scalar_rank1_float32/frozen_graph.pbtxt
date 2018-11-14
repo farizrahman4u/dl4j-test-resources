@@ -1,0 +1,414 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 3.0
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "in_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        float_val: 2.0
+      }
+    }
+  }
+}
+node {
+  name: "in_1/read"
+  op: "Identity"
+  input: "in_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_1"
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/GreaterEqual"
+  op: "GreaterEqual"
+  input: "in_0/read"
+  input: "in_1/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/All"
+  op: "All"
+  input: "assert_greater_equal/GreaterEqual"
+  input: "assert_greater_equal/Const"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/Switch"
+  op: "Switch"
+  input: "assert_greater_equal/All"
+  input: "assert_greater_equal/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/switch_t"
+  op: "Identity"
+  input: "assert_greater_equal/Assert/AssertGuard/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/switch_f"
+  op: "Identity"
+  input: "assert_greater_equal/Assert/AssertGuard/Switch"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/pred_id"
+  op: "Identity"
+  input: "assert_greater_equal/All"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/NoOp"
+  op: "NoOp"
+  input: "^assert_greater_equal/Assert/AssertGuard/switch_t"
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/control_dependency"
+  op: "Identity"
+  input: "assert_greater_equal/Assert/AssertGuard/switch_t"
+  input: "^assert_greater_equal/Assert/AssertGuard/NoOp"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@assert_greater_equal/Assert/AssertGuard/switch_t"
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/Assert/data_0"
+  op: "Const"
+  input: "^assert_greater_equal/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/Assert/data_1"
+  op: "Const"
+  input: "^assert_greater_equal/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x >= y did not hold element-wise:x (in_0/read:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/Assert/data_3"
+  op: "Const"
+  input: "^assert_greater_equal/Assert/AssertGuard/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "y (in_1/read:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/Assert"
+  op: "Assert"
+  input: "assert_greater_equal/Assert/AssertGuard/Assert/Switch"
+  input: "assert_greater_equal/Assert/AssertGuard/Assert/data_0"
+  input: "assert_greater_equal/Assert/AssertGuard/Assert/data_1"
+  input: "assert_greater_equal/Assert/AssertGuard/Assert/Switch_1"
+  input: "assert_greater_equal/Assert/AssertGuard/Assert/data_3"
+  input: "assert_greater_equal/Assert/AssertGuard/Assert/Switch_2"
+  attr {
+    key: "T"
+    value {
+      list {
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_FLOAT
+        type: DT_STRING
+        type: DT_FLOAT
+      }
+    }
+  }
+  attr {
+    key: "summarize"
+    value {
+      i: 3
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/Assert/Switch"
+  op: "Switch"
+  input: "assert_greater_equal/All"
+  input: "assert_greater_equal/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@assert_greater_equal/All"
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/Assert/Switch_1"
+  op: "Switch"
+  input: "in_0/read"
+  input: "assert_greater_equal/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/Assert/Switch_2"
+  op: "Switch"
+  input: "in_1/read"
+  input: "assert_greater_equal/Assert/AssertGuard/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_1"
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/control_dependency_1"
+  op: "Identity"
+  input: "assert_greater_equal/Assert/AssertGuard/switch_f"
+  input: "^assert_greater_equal/Assert/AssertGuard/Assert"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@assert_greater_equal/Assert/AssertGuard/switch_f"
+      }
+    }
+  }
+}
+node {
+  name: "assert_greater_equal/Assert/AssertGuard/Merge"
+  op: "Merge"
+  input: "assert_greater_equal/Assert/AssertGuard/control_dependency_1"
+  input: "assert_greater_equal/Assert/AssertGuard/control_dependency"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "Add"
+  op: "Add"
+  input: "in_0/read"
+  input: "in_1/read"
+  input: "^assert_greater_equal/Assert/AssertGuard/Merge"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+library {
+}
