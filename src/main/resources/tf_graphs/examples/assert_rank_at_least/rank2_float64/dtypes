@@ -1,0 +1,14 @@
+Add.0 float64
+in_0.0 float64
+in_0____read.0 float64
+in_1.0 int32
+in_1____read.0 int32
+assert_rank_at_least____Shape.0 int32
+assert_rank_at_least____Rank.0 int32
+assert_rank_at_least____GreaterEqual.0 bool
+assert_rank_at_least____control_dependency.0 bool
+assert_rank_at_least____Assert____Assert____data_0.0 string
+assert_rank_at_least____Assert____Assert____data_1.0 string
+assert_rank_at_least____Assert____Assert____data_3.0 string
+Cast_1.0 float64
+Add.0 float64
