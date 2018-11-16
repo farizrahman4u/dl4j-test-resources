@@ -1,0 +1,5 @@
+image_tensor:0 float32
+detection_boxes:0 float32
+detection_scores:0 float32
+num_detections:0 float32
+detection_classes:0 float32

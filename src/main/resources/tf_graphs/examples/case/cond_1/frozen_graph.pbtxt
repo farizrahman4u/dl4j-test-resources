@@ -1,0 +1,624 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "LessEqual/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "LessEqual"
+  op: "LessEqual"
+  input: "in_0/read"
+  input: "LessEqual/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "LessEqual_1/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 2.0
+      }
+    }
+  }
+}
+node {
+  name: "LessEqual_1"
+  op: "LessEqual"
+  input: "in_0/read"
+  input: "LessEqual_1/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "LessEqual_2/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 3.0
+      }
+    }
+  }
+}
+node {
+  name: "LessEqual_2"
+  op: "LessEqual"
+  input: "in_0/read"
+  input: "LessEqual_2/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "case/cond/Switch"
+  op: "Switch"
+  input: "LessEqual"
+  input: "LessEqual"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/switch_t"
+  op: "Identity"
+  input: "case/cond/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/pred_id"
+  op: "Identity"
+  input: "LessEqual"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/mul/y"
+  op: "Const"
+  input: "^case/cond/switch_t"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/mul"
+  op: "Mul"
+  input: "case/cond/mul/Switch:1"
+  input: "case/cond/mul/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "case/cond/mul/Switch"
+  op: "Switch"
+  input: "in_0/read"
+  input: "case/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/Switch"
+  op: "Switch"
+  input: "case/cond/cond/Switch/Switch"
+  input: "case/cond/cond/Switch/Switch"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/cond/Switch/Switch"
+  op: "Switch"
+  input: "LessEqual_1"
+  input: "case/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@LessEqual_1"
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/switch_t"
+  op: "Identity"
+  input: "case/cond/cond/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/cond/pred_id"
+  op: "Identity"
+  input: "case/cond/cond/Switch/Switch"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/cond/mul/y"
+  op: "Const"
+  input: "^case/cond/cond/switch_t"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 2.0
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/mul"
+  op: "Mul"
+  input: "case/cond/cond/mul/Switch_1:1"
+  input: "case/cond/cond/mul/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "case/cond/cond/mul/Switch"
+  op: "Switch"
+  input: "in_0/read"
+  input: "case/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/mul/Switch_1"
+  op: "Switch"
+  input: "case/cond/cond/mul/Switch"
+  input: "case/cond/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/Switch"
+  op: "Switch"
+  input: "case/cond/cond/cond/Switch/Switch_1"
+  input: "case/cond/cond/cond/Switch/Switch_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/Switch/Switch"
+  op: "Switch"
+  input: "LessEqual_2"
+  input: "case/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@LessEqual_2"
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/Switch/Switch_1"
+  op: "Switch"
+  input: "case/cond/cond/cond/Switch/Switch"
+  input: "case/cond/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@LessEqual_2"
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/switch_t"
+  op: "Identity"
+  input: "case/cond/cond/cond/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/switch_f"
+  op: "Identity"
+  input: "case/cond/cond/cond/Switch"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/pred_id"
+  op: "Identity"
+  input: "case/cond/cond/cond/Switch/Switch_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/mul/y"
+  op: "Const"
+  input: "^case/cond/cond/cond/switch_t"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 3.0
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/mul"
+  op: "Mul"
+  input: "case/cond/cond/cond/mul/Switch_1:1"
+  input: "case/cond/cond/cond/mul/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/mul/Switch"
+  op: "Switch"
+  input: "case/cond/cond/mul/Switch"
+  input: "case/cond/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/mul/Switch_1"
+  op: "Switch"
+  input: "case/cond/cond/cond/mul/Switch"
+  input: "case/cond/cond/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/mul_1/y"
+  op: "Const"
+  input: "^case/cond/cond/cond/switch_f"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 4.0
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/mul_1"
+  op: "Mul"
+  input: "case/cond/cond/cond/mul_1/Switch"
+  input: "case/cond/cond/cond/mul_1/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/mul_1/Switch"
+  op: "Switch"
+  input: "case/cond/cond/cond/mul/Switch"
+  input: "case/cond/cond/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "case/cond/cond/cond/Merge"
+  op: "Merge"
+  input: "case/cond/cond/cond/mul_1"
+  input: "case/cond/cond/cond/mul"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "case/cond/cond/Merge"
+  op: "Merge"
+  input: "case/cond/cond/cond/Merge"
+  input: "case/cond/cond/mul"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "case/cond/Merge"
+  op: "Merge"
+  input: "case/cond/cond/Merge"
+  input: "case/cond/mul"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+library {
+}

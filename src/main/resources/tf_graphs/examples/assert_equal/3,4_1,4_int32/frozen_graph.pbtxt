@@ -1,0 +1,275 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 3
+          }
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "in_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\003\000\000\000\003\000\000\000\003\000\000\000\003\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "in_1/read"
+  op: "Identity"
+  input: "in_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_1"
+      }
+    }
+  }
+}
+node {
+  name: "assert_equal/Equal"
+  op: "Equal"
+  input: "in_0/read"
+  input: "in_1/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "assert_equal/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "assert_equal/All"
+  op: "All"
+  input: "assert_equal/Equal"
+  input: "assert_equal/Const"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "assert_equal/Assert/Assert/data_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "assert_equal/Assert/Assert/data_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x == y did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "assert_equal/Assert/Assert/data_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (in_0/read:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "assert_equal/Assert/Assert/data_4"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "y (in_1/read:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "assert_equal/Assert/Assert"
+  op: "Assert"
+  input: "assert_equal/All"
+  input: "assert_equal/Assert/Assert/data_0"
+  input: "assert_equal/Assert/Assert/data_1"
+  input: "assert_equal/Assert/Assert/data_2"
+  input: "in_0/read"
+  input: "assert_equal/Assert/Assert/data_4"
+  input: "in_1/read"
+  attr {
+    key: "T"
+    value {
+      list {
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_INT32
+        type: DT_STRING
+        type: DT_INT32
+      }
+    }
+  }
+  attr {
+    key: "summarize"
+    value {
+      i: 3
+    }
+  }
+}
+node {
+  name: "Add"
+  op: "Add"
+  input: "in_0/read"
+  input: "in_1/read"
+  input: "^assert_equal/Assert/Assert"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+library {
+}

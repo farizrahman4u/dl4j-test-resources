@@ -1,0 +1,238 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "assert_negative/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "assert_negative/assert_less/Less"
+  op: "Less"
+  input: "in_0/read"
+  input: "assert_negative/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "assert_negative/assert_less/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "assert_negative/assert_less/All"
+  op: "All"
+  input: "assert_negative/assert_less/Less"
+  input: "assert_negative/assert_less/Const"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "assert_negative/assert_less/Assert/Assert/data_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "assert_negative/assert_less/Assert/Assert/data_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Condition x < 0 did not hold element-wise:"
+      }
+    }
+  }
+}
+node {
+  name: "assert_negative/assert_less/Assert/Assert/data_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "x (in_0/read:0) = "
+      }
+    }
+  }
+}
+node {
+  name: "assert_negative/assert_less/Assert/Assert"
+  op: "Assert"
+  input: "assert_negative/assert_less/All"
+  input: "assert_negative/assert_less/Assert/Assert/data_0"
+  input: "assert_negative/assert_less/Assert/Assert/data_1"
+  input: "assert_negative/assert_less/Assert/Assert/data_2"
+  input: "in_0/read"
+  attr {
+    key: "T"
+    value {
+      list {
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_INT32
+      }
+    }
+  }
+  attr {
+    key: "summarize"
+    value {
+      i: 3
+    }
+  }
+}
+node {
+  name: "Add/y"
+  op: "Const"
+  input: "^assert_negative/assert_less/Assert/Assert"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "Add"
+  op: "Add"
+  input: "in_0/read"
+  input: "Add/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+library {
+}

@@ -1,0 +1,287 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "~^G?L\033M?\236p9?"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "in_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "in_1/read"
+  op: "Identity"
+  input: "in_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_1"
+      }
+    }
+  }
+}
+node {
+  name: "assert_rank_at_least/Shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "assert_rank_at_least/Rank"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "assert_rank_at_least/GreaterEqual"
+  op: "GreaterEqual"
+  input: "assert_rank_at_least/Rank"
+  input: "in_1/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "assert_rank_at_least/assert_rank/static_checks_determined_all_ok"
+  op: "NoOp"
+}
+node {
+  name: "assert_rank_at_least/control_dependency"
+  op: "Identity"
+  input: "assert_rank_at_least/GreaterEqual"
+  input: "^assert_rank_at_least/assert_rank/static_checks_determined_all_ok"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@assert_rank_at_least/GreaterEqual"
+      }
+    }
+  }
+}
+node {
+  name: "assert_rank_at_least/Assert/Assert/data_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: ""
+      }
+    }
+  }
+}
+node {
+  name: "assert_rank_at_least/Assert/Assert/data_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Tensor in_0/read:0 must have rank at least"
+      }
+    }
+  }
+}
+node {
+  name: "assert_rank_at_least/Assert/Assert/data_3"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "Received shape: "
+      }
+    }
+  }
+}
+node {
+  name: "assert_rank_at_least/Assert/Assert"
+  op: "Assert"
+  input: "assert_rank_at_least/control_dependency"
+  input: "assert_rank_at_least/Assert/Assert/data_0"
+  input: "assert_rank_at_least/Assert/Assert/data_1"
+  input: "in_1/read"
+  input: "assert_rank_at_least/Assert/Assert/data_3"
+  input: "assert_rank_at_least/Shape"
+  attr {
+    key: "T"
+    value {
+      list {
+        type: DT_STRING
+        type: DT_STRING
+        type: DT_INT32
+        type: DT_STRING
+        type: DT_INT32
+      }
+    }
+  }
+  attr {
+    key: "summarize"
+    value {
+      i: 3
+    }
+  }
+}
+node {
+  name: "Cast"
+  op: "Cast"
+  input: "in_1/read"
+  input: "^assert_rank_at_least/Assert/Assert"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "Add"
+  op: "Add"
+  input: "in_0/read"
+  input: "Cast"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+library {
+}
