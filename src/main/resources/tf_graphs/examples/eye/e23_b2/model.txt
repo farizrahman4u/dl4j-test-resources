@@ -641,5 +641,5 @@ node {
   input: "^in_0/Assign"
 }
 versions {
-  producer: 26
+  producer: 27
 }
