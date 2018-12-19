@@ -1,0 +1,13 @@
+Add_1.0 float32
+Variable.0 float32
+Variable____read.0 float32
+mul____x.0 float32
+mul.0 float32
+add____y.0 float32
+add.0 float32
+Const.0 float32
+Const_1.0 float32
+clip_by_value____Minimum.0 float32
+clip_by_value.0 float32
+Add_1____y.0 float32
+Add_1.0 float32
