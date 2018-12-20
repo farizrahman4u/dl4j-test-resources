@@ -1,0 +1,5 @@
+image:0 float64
+output.0 float32
+image float32
+max_pool1.0 float32
+output.0 float32

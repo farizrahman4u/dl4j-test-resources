@@ -173,6 +173,17 @@ node {
     }
   }
   attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
     key: "padding"
     value {
       s: "VALID"
@@ -415,6 +426,17 @@ node {
     key: "data_format"
     value {
       s: "NHWC"
+    }
+  }
+  attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
     }
   }
   attr {

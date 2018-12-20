@@ -670,6 +670,7 @@ node {
 node {
   name: "save/RestoreV2/tensor_names"
   op: "Const"
+  device: "/device:CPU:0"
   attr {
     key: "dtype"
     value {
@@ -683,10 +684,11 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 1
+            size: 2
           }
         }
         string_val: "filter1"
+        string_val: "filter2"
       }
     }
   }
@@ -694,6 +696,7 @@ node {
 node {
   name: "save/RestoreV2/shape_and_slices"
   op: "Const"
+  device: "/device:CPU:0"
   attr {
     key: "dtype"
     value {
@@ -707,9 +710,10 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 1
+            size: 2
           }
         }
+        string_val: ""
         string_val: ""
       }
     }
@@ -721,10 +725,12 @@ node {
   input: "save/Const"
   input: "save/RestoreV2/tensor_names"
   input: "save/RestoreV2/shape_and_slices"
+  device: "/device:CPU:0"
   attr {
     key: "dtypes"
     value {
       list {
+        type: DT_FLOAT
         type: DT_FLOAT
       }
     }
@@ -763,73 +769,10 @@ node {
   }
 }
 node {
-  name: "save/RestoreV2_1/tensor_names"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_STRING
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_STRING
-        tensor_shape {
-          dim {
-            size: 1
-          }
-        }
-        string_val: "filter2"
-      }
-    }
-  }
-}
-node {
-  name: "save/RestoreV2_1/shape_and_slices"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_STRING
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_STRING
-        tensor_shape {
-          dim {
-            size: 1
-          }
-        }
-        string_val: ""
-      }
-    }
-  }
-}
-node {
-  name: "save/RestoreV2_1"
-  op: "RestoreV2"
-  input: "save/Const"
-  input: "save/RestoreV2_1/tensor_names"
-  input: "save/RestoreV2_1/shape_and_slices"
-  attr {
-    key: "dtypes"
-    value {
-      list {
-        type: DT_FLOAT
-      }
-    }
-  }
-}
-node {
   name: "save/Assign_1"
   op: "Assign"
   input: "filter2"
-  input: "save/RestoreV2_1"
+  input: "save/RestoreV2:1"
   attr {
     key: "T"
     value {
@@ -870,5 +813,5 @@ node {
   input: "^filter2/Assign"
 }
 versions {
-  producer: 24
+  producer: 27
 }

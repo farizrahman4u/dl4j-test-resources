@@ -251,30 +251,6 @@ node {
   }
 }
 node {
-  name: "atrous_one/Shape"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_INT32
-        tensor_shape {
-          dim {
-            size: 4
-          }
-        }
-        tensor_content: "\004\000\000\000\005\000\000\000\004\000\000\000\002\000\000\000"
-      }
-    }
-  }
-}
-node {
   name: "atrous_one/dilation_rate"
   op: "Const"
   attr {
@@ -294,6 +270,30 @@ node {
           }
         }
         tensor_content: "\010\000\000\000\010\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "atrous_one/filter_shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\004\000\000\000\005\000\000\000\004\000\000\000\002\000\000\000"
       }
     }
   }
@@ -494,6 +494,17 @@ node {
     key: "data_format"
     value {
       s: "NHWC"
+    }
+  }
+  attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
     }
   }
   attr {
@@ -820,30 +831,6 @@ node {
   }
 }
 node {
-  name: "convolution/Shape"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_INT32
-        tensor_shape {
-          dim {
-            size: 4
-          }
-        }
-        tensor_content: "\037\000\000\000\037\000\000\000\002\000\000\000\001\000\000\000"
-      }
-    }
-  }
-}
-node {
   name: "convolution/dilation_rate"
   op: "Const"
   attr {
@@ -1063,6 +1050,17 @@ node {
     key: "data_format"
     value {
       s: "NHWC"
+    }
+  }
+  attr {
+    key: "dilations"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
     }
   }
   attr {
@@ -1288,6 +1286,7 @@ node {
 node {
   name: "save/RestoreV2/tensor_names"
   op: "Const"
+  device: "/device:CPU:0"
   attr {
     key: "dtype"
     value {
@@ -1301,10 +1300,11 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 1
+            size: 2
           }
         }
         string_val: "filter1"
+        string_val: "filter2"
       }
     }
   }
@@ -1312,6 +1312,7 @@ node {
 node {
   name: "save/RestoreV2/shape_and_slices"
   op: "Const"
+  device: "/device:CPU:0"
   attr {
     key: "dtype"
     value {
@@ -1325,9 +1326,10 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 1
+            size: 2
           }
         }
+        string_val: ""
         string_val: ""
       }
     }
@@ -1339,10 +1341,12 @@ node {
   input: "save/Const"
   input: "save/RestoreV2/tensor_names"
   input: "save/RestoreV2/shape_and_slices"
+  device: "/device:CPU:0"
   attr {
     key: "dtypes"
     value {
       list {
+        type: DT_FLOAT
         type: DT_FLOAT
       }
     }
@@ -1381,73 +1385,10 @@ node {
   }
 }
 node {
-  name: "save/RestoreV2_1/tensor_names"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_STRING
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_STRING
-        tensor_shape {
-          dim {
-            size: 1
-          }
-        }
-        string_val: "filter2"
-      }
-    }
-  }
-}
-node {
-  name: "save/RestoreV2_1/shape_and_slices"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_STRING
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_STRING
-        tensor_shape {
-          dim {
-            size: 1
-          }
-        }
-        string_val: ""
-      }
-    }
-  }
-}
-node {
-  name: "save/RestoreV2_1"
-  op: "RestoreV2"
-  input: "save/Const"
-  input: "save/RestoreV2_1/tensor_names"
-  input: "save/RestoreV2_1/shape_and_slices"
-  attr {
-    key: "dtypes"
-    value {
-      list {
-        type: DT_FLOAT
-      }
-    }
-  }
-}
-node {
   name: "save/Assign_1"
   op: "Assign"
   input: "filter2"
-  input: "save/RestoreV2_1"
+  input: "save/RestoreV2:1"
   attr {
     key: "T"
     value {
@@ -1488,5 +1429,5 @@ node {
   input: "^filter2/Assign"
 }
 versions {
-  producer: 24
+  producer: 27
 }

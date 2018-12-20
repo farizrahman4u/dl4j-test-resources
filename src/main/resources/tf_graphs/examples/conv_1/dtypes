@@ -1,0 +1,11 @@
+image:0 float64
+output.0 float32
+image float32
+filterW0.0 float32
+filterW0____read.0 float32
+conv3d1.0 float32
+Reshape____shape.0 int32
+Reshape.0 float32
+Variable.0 float32
+Variable____read.0 float32
+output.0 float32

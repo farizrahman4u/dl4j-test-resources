@@ -1,0 +1,16 @@
+image:0 float64
+output.0 float32
+image float32
+filterW1.0 float32
+filterW1____read.0 float32
+conv2d1.0 float32
+avg_pool2.0 float32
+filterW3.0 float32
+filterW3____read.0 float32
+conv2d3.0 float32
+max_pool4.0 float32
+Reshape____shape.0 int32
+Reshape.0 float32
+Variable.0 float32
+Variable____read.0 float32
+output.0 float32
