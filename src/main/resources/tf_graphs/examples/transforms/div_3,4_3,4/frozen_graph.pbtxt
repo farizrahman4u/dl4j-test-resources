@@ -1,5 +1,5 @@
 node {
-  name: "Variable_4"
+  name: "Variable"
   op: "Const"
   attr {
     key: "dtype"
@@ -20,15 +20,15 @@ node {
             size: 4
           }
         }
-        tensor_content: "\210j\004\277b\362\212?0\002\037>\007\314\016?\365*\177?\031\361??>>\270\277\202\343\312>e\204\023\277\'#\250?\224\204g<fI\265?"
+        tensor_content: "\220\275+\277\351\357d>\026\032L?\026\365\304=8 9?G\036\255>K\345:\277NZi?\332f\002\277\261\220y?\312\223\010\300\303/\032?"
       }
     }
   }
 }
 node {
-  name: "Variable_4/read"
+  name: "Variable/read"
   op: "Identity"
-  input: "Variable_4"
+  input: "Variable"
   attr {
     key: "T"
     value {
@@ -39,13 +39,13 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@Variable_4"
+        s: "loc:@Variable"
       }
     }
   }
 }
 node {
-  name: "Variable_5"
+  name: "Variable_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -66,15 +66,15 @@ node {
             size: 4
           }
         }
-        tensor_content: "3\341\201\276\271M\r@@\345/>S\032\215\276\335\205\365>GG\377>Qx\237?r+0\277\324\021\345>\243\234\216\274\204\362\353?\016\205G\275"
+        tensor_content: "\305\266\364\276rib?\246\257\037\277uus\277\\\354u\277.`\273?\027_k?K6\212>\254X\233\274\010B\374\277>\013\302>*\351\024\277"
       }
     }
   }
 }
 node {
-  name: "Variable_5/read"
+  name: "Variable_1/read"
   op: "Identity"
-  input: "Variable_5"
+  input: "Variable_1"
   attr {
     key: "T"
     value {
@@ -85,7 +85,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@Variable_5"
+        s: "loc:@Variable_1"
       }
     }
   }
@@ -93,8 +93,8 @@ node {
 node {
   name: "div-1"
   op: "RealDiv"
-  input: "Variable_4/read"
-  input: "Variable_5/read"
+  input: "Variable/read"
+  input: "Variable_1/read"
   attr {
     key: "T"
     value {
@@ -103,7 +103,7 @@ node {
   }
 }
 node {
-  name: "Add_2/y"
+  name: "Add/y"
   op: "Const"
   attr {
     key: "dtype"
@@ -124,10 +124,10 @@ node {
   }
 }
 node {
-  name: "Add_2"
+  name: "Add"
   op: "Add"
   input: "div-1"
-  input: "Add_2/y"
+  input: "Add/y"
   attr {
     key: "T"
     value {

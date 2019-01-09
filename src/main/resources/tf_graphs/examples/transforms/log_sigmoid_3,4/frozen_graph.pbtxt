@@ -1,5 +1,5 @@
 node {
-  name: "Variable_10"
+  name: "Variable"
   op: "Const"
   attr {
     key: "dtype"
@@ -20,15 +20,15 @@ node {
             size: 4
           }
         }
-        tensor_content: "\246\020;\277t\261\030?x\3119?\360|\005>;\232\377\276s\323\224?I\3578?0-\033@\242<h?\234[\253?\013\231\217=W\264\265?"
+        tensor_content: "\220\275+\277\351\357d>\026\032L?\026\365\304=8 9?G\036\255>K\345:\277NZi?\332f\002\277\261\220y?\312\223\010\300\303/\032?"
       }
     }
   }
 }
 node {
-  name: "Variable_10/read"
+  name: "Variable/read"
   op: "Identity"
-  input: "Variable_10"
+  input: "Variable"
   attr {
     key: "T"
     value {
@@ -39,7 +39,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@Variable_10"
+        s: "loc:@Variable"
       }
     }
   }
@@ -47,7 +47,7 @@ node {
 node {
   name: "log_sigmoid1/Neg"
   op: "Neg"
-  input: "Variable_10/read"
+  input: "Variable/read"
   attr {
     key: "T"
     value {
@@ -78,7 +78,7 @@ node {
   }
 }
 node {
-  name: "Add_5/y"
+  name: "Add/y"
   op: "Const"
   attr {
     key: "dtype"
@@ -99,10 +99,10 @@ node {
   }
 }
 node {
-  name: "Add_5"
+  name: "Add"
   op: "Add"
   input: "log_sigmoid1"
-  input: "Add_5/y"
+  input: "Add/y"
   attr {
     key: "T"
     value {

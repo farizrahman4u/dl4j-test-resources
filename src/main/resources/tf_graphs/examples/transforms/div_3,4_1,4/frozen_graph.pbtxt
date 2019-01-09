@@ -1,5 +1,5 @@
 node {
-  name: "Variable_6"
+  name: "Variable"
   op: "Const"
   attr {
     key: "dtype"
@@ -20,15 +20,15 @@ node {
             size: 4
           }
         }
-        tensor_content: "\\F\275?\025\330&?fX\372=k`+?\004\223\375\277\270m{\276\332\240i\277G\202\250?\030\264B\275\021\242\224\277[[F\276\216?\211\277"
+        tensor_content: "\220\275+\277\351\357d>\026\032L?\026\365\304=8 9?G\036\255>K\345:\277NZi?\332f\002\277\261\220y?\312\223\010\300\303/\032?"
       }
     }
   }
 }
 node {
-  name: "Variable_6/read"
+  name: "Variable/read"
   op: "Identity"
-  input: "Variable_6"
+  input: "Variable"
   attr {
     key: "T"
     value {
@@ -39,13 +39,13 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@Variable_6"
+        s: "loc:@Variable"
       }
     }
   }
 }
 node {
-  name: "Variable_7"
+  name: "Variable_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -66,15 +66,15 @@ node {
             size: 4
           }
         }
-        tensor_content: "\320\277\037\277\200\302\337>\006\321v?@\347\360>"
+        tensor_content: "\305\266\364\276rib?\246\257\037\277uus\277"
       }
     }
   }
 }
 node {
-  name: "Variable_7/read"
+  name: "Variable_1/read"
   op: "Identity"
-  input: "Variable_7"
+  input: "Variable_1"
   attr {
     key: "T"
     value {
@@ -85,16 +85,16 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@Variable_7"
+        s: "loc:@Variable_1"
       }
     }
   }
 }
 node {
-  name: "div-1_1"
+  name: "div-1"
   op: "RealDiv"
-  input: "Variable_6/read"
-  input: "Variable_7/read"
+  input: "Variable/read"
+  input: "Variable_1/read"
   attr {
     key: "T"
     value {
@@ -103,7 +103,7 @@ node {
   }
 }
 node {
-  name: "Add_3/y"
+  name: "Add/y"
   op: "Const"
   attr {
     key: "dtype"
@@ -124,10 +124,10 @@ node {
   }
 }
 node {
-  name: "Add_3"
+  name: "Add"
   op: "Add"
-  input: "div-1_1"
-  input: "Add_3/y"
+  input: "div-1"
+  input: "Add/y"
   attr {
     key: "T"
     value {

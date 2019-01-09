@@ -1,5 +1,5 @@
 node {
-  name: "Variable_8"
+  name: "Variable"
   op: "Const"
   attr {
     key: "dtype"
@@ -20,15 +20,15 @@ node {
             size: 1
           }
         }
-        tensor_content: "\332*7?\031\340\n\300\310\037\216\277"
+        tensor_content: "\220\275+\277\351\357d>\026\032L?"
       }
     }
   }
 }
 node {
-  name: "Variable_8/read"
+  name: "Variable/read"
   op: "Identity"
-  input: "Variable_8"
+  input: "Variable"
   attr {
     key: "T"
     value {
@@ -39,13 +39,13 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@Variable_8"
+        s: "loc:@Variable"
       }
     }
   }
 }
 node {
-  name: "Variable_9"
+  name: "Variable_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -66,15 +66,15 @@ node {
             size: 4
           }
         }
-        tensor_content: "]\227]\277-\024\244>\367\036\"?\212/\372?"
+        tensor_content: "\305\266\364\276rib?\246\257\037\277uus\277"
       }
     }
   }
 }
 node {
-  name: "Variable_9/read"
+  name: "Variable_1/read"
   op: "Identity"
-  input: "Variable_9"
+  input: "Variable_1"
   attr {
     key: "T"
     value {
@@ -85,16 +85,16 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@Variable_9"
+        s: "loc:@Variable_1"
       }
     }
   }
 }
 node {
-  name: "div-1_2"
+  name: "div-1"
   op: "RealDiv"
-  input: "Variable_8/read"
-  input: "Variable_9/read"
+  input: "Variable/read"
+  input: "Variable_1/read"
   attr {
     key: "T"
     value {
@@ -103,7 +103,7 @@ node {
   }
 }
 node {
-  name: "Add_4/y"
+  name: "Add/y"
   op: "Const"
   attr {
     key: "dtype"
@@ -124,10 +124,10 @@ node {
   }
 }
 node {
-  name: "Add_4"
+  name: "Add"
   op: "Add"
-  input: "div-1_2"
-  input: "Add_4/y"
+  input: "div-1"
+  input: "Add/y"
   attr {
     key: "T"
     value {

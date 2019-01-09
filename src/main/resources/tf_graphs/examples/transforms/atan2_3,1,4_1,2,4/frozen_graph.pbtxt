@@ -1,5 +1,5 @@
 node {
-  name: "Variable_2"
+  name: "Variable"
   op: "Const"
   attr {
     key: "dtype"
@@ -23,15 +23,15 @@ node {
             size: 4
           }
         }
-        tensor_content: "+\312m\276`\202\014?b\367\267\277Y\363\257?\232\010J>X\222\262\274\362E\315?\305Z}?\332\032\251\277\370#L\277\210\337\021\300A\227\244\277"
+        tensor_content: "\220\275+\277\351\357d>\026\032L?\026\365\304=8 9?G\036\255>K\345:\277NZi?\332f\002\277\261\220y?\312\223\010\300\303/\032?"
       }
     }
   }
 }
 node {
-  name: "Variable_2/read"
+  name: "Variable/read"
   op: "Identity"
-  input: "Variable_2"
+  input: "Variable"
   attr {
     key: "T"
     value {
@@ -42,13 +42,13 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@Variable_2"
+        s: "loc:@Variable"
       }
     }
   }
 }
 node {
-  name: "Variable_3"
+  name: "Variable_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -72,15 +72,15 @@ node {
             size: 4
           }
         }
-        tensor_content: "\"M\226?\261+\032=Td8?\010 \005\277\237\200\217\277\r\223D\277\312E#?0V\014\277"
+        tensor_content: "\305\266\364\276rib?\246\257\037\277uus\277\\\354u\277.`\273?\027_k?K6\212>"
       }
     }
   }
 }
 node {
-  name: "Variable_3/read"
+  name: "Variable_1/read"
   op: "Identity"
-  input: "Variable_3"
+  input: "Variable_1"
   attr {
     key: "T"
     value {
@@ -91,16 +91,16 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@Variable_3"
+        s: "loc:@Variable_1"
       }
     }
   }
 }
 node {
-  name: "atan2-1_1"
+  name: "atan2-1"
   op: "Atan2"
-  input: "Variable_2/read"
-  input: "Variable_3/read"
+  input: "Variable/read"
+  input: "Variable_1/read"
   attr {
     key: "T"
     value {
@@ -109,7 +109,7 @@ node {
   }
 }
 node {
-  name: "Add_1/y"
+  name: "Add/y"
   op: "Const"
   attr {
     key: "dtype"
@@ -130,10 +130,10 @@ node {
   }
 }
 node {
-  name: "Add_1"
+  name: "Add"
   op: "Add"
-  input: "atan2-1_1"
-  input: "Add_1/y"
+  input: "atan2-1"
+  input: "Add/y"
   attr {
     key: "T"
     value {

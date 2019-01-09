@@ -112,83 +112,7 @@ node {
   }
 }
 node {
-  name: "range/start"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_INT32
-        tensor_shape {
-        }
-        int_val: 0
-      }
-    }
-  }
-}
-node {
-  name: "range/limit"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_INT32
-        tensor_shape {
-        }
-        int_val: 8
-      }
-    }
-  }
-}
-node {
-  name: "range/delta"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_INT32
-        tensor_shape {
-        }
-        int_val: 1
-      }
-    }
-  }
-}
-node {
-  name: "range"
-  op: "Range"
-  input: "range/start"
-  input: "range/limit"
-  input: "range/delta"
-  attr {
-    key: "Tidx"
-    value {
-      type: DT_INT32
-    }
-  }
-}
-node {
-  name: "Reshape/shape"
+  name: "random_uniform/shape"
   op: "Const"
   attr {
     key: "dtype"
@@ -212,10 +136,53 @@ node {
   }
 }
 node {
-  name: "Reshape"
-  op: "Reshape"
-  input: "range"
-  input: "Reshape/shape"
+  name: "random_uniform/min"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "random_uniform/max"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 10
+      }
+    }
+  }
+}
+node {
+  name: "random_uniform"
+  op: "RandomUniformInt"
+  input: "random_uniform/shape"
+  input: "random_uniform/min"
+  input: "random_uniform/max"
   attr {
     key: "T"
     value {
@@ -223,9 +190,21 @@ node {
     }
   }
   attr {
-    key: "Tshape"
+    key: "Tout"
     value {
       type: DT_INT32
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 7
     }
   }
 }
@@ -268,7 +247,7 @@ node {
   name: "in_1/Assign"
   op: "Assign"
   input: "in_1"
-  input: "Reshape"
+  input: "random_uniform"
   attr {
     key: "T"
     value {
@@ -316,7 +295,7 @@ node {
   }
 }
 node {
-  name: "random_uniform/shape"
+  name: "random_uniform_1/shape"
   op: "Const"
   attr {
     key: "dtype"
@@ -340,7 +319,7 @@ node {
   }
 }
 node {
-  name: "random_uniform/min"
+  name: "random_uniform_1/min"
   op: "Const"
   attr {
     key: "dtype"
@@ -361,7 +340,7 @@ node {
   }
 }
 node {
-  name: "random_uniform/max"
+  name: "random_uniform_1/max"
   op: "Const"
   attr {
     key: "dtype"
@@ -382,9 +361,9 @@ node {
   }
 }
 node {
-  name: "random_uniform/RandomUniform"
+  name: "random_uniform_1/RandomUniform"
   op: "RandomUniform"
-  input: "random_uniform/shape"
+  input: "random_uniform_1/shape"
   attr {
     key: "T"
     value {
@@ -406,15 +385,15 @@ node {
   attr {
     key: "seed2"
     value {
-      i: 16
+      i: 14
     }
   }
 }
 node {
-  name: "random_uniform/sub"
+  name: "random_uniform_1/sub"
   op: "Sub"
-  input: "random_uniform/max"
-  input: "random_uniform/min"
+  input: "random_uniform_1/max"
+  input: "random_uniform_1/min"
   attr {
     key: "T"
     value {
@@ -423,10 +402,10 @@ node {
   }
 }
 node {
-  name: "random_uniform/mul"
+  name: "random_uniform_1/mul"
   op: "Mul"
-  input: "random_uniform/RandomUniform"
-  input: "random_uniform/sub"
+  input: "random_uniform_1/RandomUniform"
+  input: "random_uniform_1/sub"
   attr {
     key: "T"
     value {
@@ -435,10 +414,10 @@ node {
   }
 }
 node {
-  name: "random_uniform"
+  name: "random_uniform_1"
   op: "Add"
-  input: "random_uniform/mul"
-  input: "random_uniform/min"
+  input: "random_uniform_1/mul"
+  input: "random_uniform_1/min"
   attr {
     key: "T"
     value {
@@ -482,7 +461,7 @@ node {
   name: "in_2/Assign"
   op: "Assign"
   input: "in_2"
-  input: "random_uniform"
+  input: "random_uniform_1"
   attr {
     key: "T"
     value {
@@ -1044,5 +1023,5 @@ node {
   input: "^in_2/Assign"
 }
 versions {
-  producer: 26
+  producer: 27
 }

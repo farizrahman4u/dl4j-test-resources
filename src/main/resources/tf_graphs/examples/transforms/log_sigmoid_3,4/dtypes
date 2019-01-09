@@ -1,0 +1,8 @@
+Add.0 float32
+Variable.0 float32
+Variable____read.0 float32
+log_sigmoid1____Neg.0 float32
+log_sigmoid1____Softplus.0 float32
+log_sigmoid1.0 float32
+Add____y.0 float32
+Add.0 float32

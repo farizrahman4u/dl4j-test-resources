@@ -365,7 +365,7 @@ node {
   }
 }
 node {
-  name: "count_nonzero/NotEqual/y"
+  name: "count_nonzero/zeros"
   op: "Const"
   attr {
     key: "dtype"
@@ -389,7 +389,7 @@ node {
   name: "count_nonzero/NotEqual"
   op: "NotEqual"
   input: "add"
-  input: "count_nonzero/NotEqual/y"
+  input: "count_nonzero/zeros"
   attr {
     key: "T"
     value {
@@ -411,6 +411,12 @@ node {
     key: "SrcT"
     value {
       type: DT_BOOL
+    }
+  }
+  attr {
+    key: "Truncate"
+    value {
+      b: false
     }
   }
 }
@@ -476,6 +482,12 @@ node {
     key: "SrcT"
     value {
       type: DT_INT64
+    }
+  }
+  attr {
+    key: "Truncate"
+    value {
+      b: false
     }
   }
 }
@@ -804,6 +816,7 @@ node {
 node {
   name: "save/RestoreV2/tensor_names"
   op: "Const"
+  device: "/device:CPU:0"
   attr {
     key: "dtype"
     value {
@@ -828,6 +841,7 @@ node {
 node {
   name: "save/RestoreV2/shape_and_slices"
   op: "Const"
+  device: "/device:CPU:0"
   attr {
     key: "dtype"
     value {
@@ -855,6 +869,7 @@ node {
   input: "save/Const"
   input: "save/RestoreV2/tensor_names"
   input: "save/RestoreV2/shape_and_slices"
+  device: "/device:CPU:0"
   attr {
     key: "dtypes"
     value {
@@ -907,5 +922,5 @@ node {
   input: "^Variable/Assign"
 }
 versions {
-  producer: 24
+  producer: 27
 }
