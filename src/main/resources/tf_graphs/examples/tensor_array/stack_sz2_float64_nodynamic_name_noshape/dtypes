@@ -1,0 +1,17 @@
+TensorArrayStack/TensorArrayGatherV3.0 float64
+in_0.0 float64
+in_0____read.0 float64
+in_1.0 float64
+in_1____read.0 float64
+TensorArray____size.0 int32
+TensorArray.0 resource
+TensorArray.1 float32
+TensorArrayWrite____TensorArrayWriteV3____index.0 int32
+TensorArrayWrite____TensorArrayWriteV3.0 float32
+TensorArrayWrite_1____TensorArrayWriteV3____index.0 int32
+TensorArrayWrite_1____TensorArrayWriteV3.0 float32
+TensorArrayStack____TensorArraySizeV3.0 int32
+TensorArrayStack____range____start.0 int32
+TensorArrayStack____range____delta.0 int32
+TensorArrayStack____range.0 int32
+TensorArrayStack____TensorArrayGatherV3.0 float64
