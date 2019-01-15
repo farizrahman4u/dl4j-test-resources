@@ -1,5 +1,5 @@
 node {
-  name: "in_0"
+  name: "Variable"
   op: "Const"
   attr {
     key: "dtype"
@@ -20,15 +20,15 @@ node {
             size: 3
           }
         }
-        tensor_content: "~^G?L\033M?\236p9?\220ol>\356%:?X\2708><q\001?b|d?\224\316\013?"
+        tensor_content: "?\257\343?\220ol><q\001?\220ol>\367\022\335?b|d?<q\001?b|d?J\347\305?"
       }
     }
   }
 }
 node {
-  name: "in_0/read"
+  name: "Variable/read"
   op: "Identity"
-  input: "in_0"
+  input: "Variable"
   attr {
     key: "T"
     value {
@@ -39,7 +39,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@in_0"
+        s: "loc:@Variable"
       }
     }
   }
@@ -82,7 +82,7 @@ node {
 node {
   name: "add"
   op: "Add"
-  input: "in_0/read"
+  input: "Variable/read"
   input: "eye/MatrixDiag"
   attr {
     key: "T"

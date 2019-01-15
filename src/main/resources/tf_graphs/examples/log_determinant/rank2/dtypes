@@ -1,5 +1,6 @@
-in_0.0 float32
-in_0____read.0 float32
+logdet/mul.0 float32
+Variable.0 float32
+Variable____read.0 float32
 eye____ones.0 float32
 eye____MatrixDiag.0 float32
 add.0 float32

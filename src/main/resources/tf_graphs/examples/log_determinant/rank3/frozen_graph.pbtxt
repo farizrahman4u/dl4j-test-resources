@@ -1,5 +1,5 @@
 node {
-  name: "in_0"
+  name: "Variable"
   op: "Const"
   attr {
     key: "dtype"
@@ -14,24 +14,21 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
           dim {
-            size: 2
-          }
-          dim {
             size: 3
           }
           dim {
             size: 3
           }
         }
-        tensor_content: "~^G?L\033M?\236p9?\220ol>\356%:?X\2708><q\001?b|d?\224\316\013?\314al?P@\257=,5K?\326\271(?\3566\016?`u#>0\024\236>\240{\036>\240h\360>"
+        tensor_content: "?\257\343?\220ol><q\001?\220ol>\367\022\335?b|d?<q\001?b|d?J\347\305?"
       }
     }
   }
 }
 node {
-  name: "in_0/read"
+  name: "Variable/read"
   op: "Identity"
-  input: "in_0"
+  input: "Variable"
   attr {
     key: "T"
     value {
@@ -42,8 +39,78 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@in_0"
+        s: "loc:@Variable"
       }
+    }
+  }
+}
+node {
+  name: "Variable_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "?\257\343?\220ol><q\001?\220ol>\367\022\335?b|d?<q\001?b|d?J\347\305?"
+      }
+    }
+  }
+}
+node {
+  name: "Variable_1/read"
+  op: "Identity"
+  input: "Variable_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Variable_1"
+      }
+    }
+  }
+}
+node {
+  name: "stack"
+  op: "Pack"
+  input: "Variable/read"
+  input: "Variable_1/read"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 0
     }
   }
 }
@@ -88,7 +155,7 @@ node {
 node {
   name: "add"
   op: "Add"
-  input: "in_0/read"
+  input: "stack"
   input: "eye/MatrixDiag"
   attr {
     key: "T"
