@@ -1,0 +1,6 @@
+transpose.0 float32
+import____Variable.0 float32
+import____Variable____read.0 float32
+import____transpose____x.0 float32
+import____transpose____perm.0 int32
+import____transpose.0 float32
