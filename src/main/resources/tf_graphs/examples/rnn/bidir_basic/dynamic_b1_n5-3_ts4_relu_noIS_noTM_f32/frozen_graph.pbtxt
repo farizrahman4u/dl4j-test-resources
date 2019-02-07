@@ -1,0 +1,4307 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 1
+          }
+          dim {
+            size: 4
+          }
+          dim {
+            size: 5
+          }
+        }
+        tensor_content: "~^G?L\033M?\236p9?\220ol>\356%:?X\2708><q\001?b|d?\224\316\013?\314al?P@\257=,5K?\326\271(?\3566\016?`u#>0\024\236>\240{\036>\240h\360>\222o~?v|\034?"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/Rank"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/range/start"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/range/delta"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/range"
+  op: "Range"
+  input: "bidirectional_rnn/fw/fw/range/start"
+  input: "bidirectional_rnn/fw/fw/Rank"
+  input: "bidirectional_rnn/fw/fw/range/delta"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/concat/values_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/concat"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/fw/fw/concat/values_0"
+  input: "bidirectional_rnn/fw/fw/range"
+  input: "bidirectional_rnn/fw/fw/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/transpose"
+  op: "Transpose"
+  input: "in_0/read"
+  input: "bidirectional_rnn/fw/fw/concat"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tperm"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/concat"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/Const"
+  input: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/Const_1"
+  input: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/zeros/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/zeros"
+  op: "Fill"
+  input: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/concat"
+  input: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/zeros/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "index_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/Shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\004\000\000\000\001\000\000\000\005\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/strided_slice"
+  op: "StridedSlice"
+  input: "bidirectional_rnn/fw/fw/Shape"
+  input: "bidirectional_rnn/fw/fw/strided_slice/stack"
+  input: "bidirectional_rnn/fw/fw/strided_slice/stack_1"
+  input: "bidirectional_rnn/fw/fw/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/time"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArray"
+  op: "TensorArrayV3"
+  input: "bidirectional_rnn/fw/fw/strided_slice"
+  attr {
+    key: "clear_after_read"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "dynamic_size"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "element_shape"
+    value {
+      shape {
+        dim {
+          size: 1
+        }
+        dim {
+          size: 3
+        }
+      }
+    }
+  }
+  attr {
+    key: "identical_element_shapes"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "tensor_array_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/dynamic_rnn/output_0"
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArray_1"
+  op: "TensorArrayV3"
+  input: "bidirectional_rnn/fw/fw/strided_slice"
+  attr {
+    key: "clear_after_read"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "dynamic_size"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "element_shape"
+    value {
+      shape {
+        dim {
+          size: 1
+        }
+        dim {
+          size: 5
+        }
+      }
+    }
+  }
+  attr {
+    key: "identical_element_shapes"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "tensor_array_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/dynamic_rnn/input_0"
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayUnstack/Shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\004\000\000\000\001\000\000\000\005\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayUnstack/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayUnstack/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayUnstack/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayUnstack/strided_slice"
+  op: "StridedSlice"
+  input: "bidirectional_rnn/fw/fw/TensorArrayUnstack/Shape"
+  input: "bidirectional_rnn/fw/fw/TensorArrayUnstack/strided_slice/stack"
+  input: "bidirectional_rnn/fw/fw/TensorArrayUnstack/strided_slice/stack_1"
+  input: "bidirectional_rnn/fw/fw/TensorArrayUnstack/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayUnstack/range/start"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayUnstack/range/delta"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayUnstack/range"
+  op: "Range"
+  input: "bidirectional_rnn/fw/fw/TensorArrayUnstack/range/start"
+  input: "bidirectional_rnn/fw/fw/TensorArrayUnstack/strided_slice"
+  input: "bidirectional_rnn/fw/fw/TensorArrayUnstack/range/delta"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayUnstack/TensorArrayScatter/TensorArrayScatterV3"
+  op: "TensorArrayScatterV3"
+  input: "bidirectional_rnn/fw/fw/TensorArray_1"
+  input: "bidirectional_rnn/fw/fw/TensorArrayUnstack/range"
+  input: "bidirectional_rnn/fw/fw/transpose"
+  input: "bidirectional_rnn/fw/fw/TensorArray_1:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/transpose"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/Maximum/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/Maximum"
+  op: "Maximum"
+  input: "bidirectional_rnn/fw/fw/Maximum/x"
+  input: "bidirectional_rnn/fw/fw/strided_slice"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/Minimum"
+  op: "Minimum"
+  input: "bidirectional_rnn/fw/fw/strided_slice"
+  input: "bidirectional_rnn/fw/fw/Maximum"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/iteration_counter"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/fw/while/iteration_counter"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Enter_1"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/fw/time"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Enter_2"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/fw/TensorArray:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Enter_3"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/fw/BasicRNNCellZeroState/zeros"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Merge"
+  op: "Merge"
+  input: "bidirectional_rnn/fw/fw/while/Enter"
+  input: "bidirectional_rnn/fw/fw/while/NextIteration"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Merge_1"
+  op: "Merge"
+  input: "bidirectional_rnn/fw/fw/while/Enter_1"
+  input: "bidirectional_rnn/fw/fw/while/NextIteration_1"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Merge_2"
+  op: "Merge"
+  input: "bidirectional_rnn/fw/fw/while/Enter_2"
+  input: "bidirectional_rnn/fw/fw/while/NextIteration_2"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Merge_3"
+  op: "Merge"
+  input: "bidirectional_rnn/fw/fw/while/Enter_3"
+  input: "bidirectional_rnn/fw/fw/while/NextIteration_3"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Less"
+  op: "Less"
+  input: "bidirectional_rnn/fw/fw/while/Merge"
+  input: "bidirectional_rnn/fw/fw/while/Less/Enter"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Less/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/fw/strided_slice"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Less_1"
+  op: "Less"
+  input: "bidirectional_rnn/fw/fw/while/Merge_1"
+  input: "bidirectional_rnn/fw/fw/while/Less_1/Enter"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Less_1/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/fw/Minimum"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/LogicalAnd"
+  op: "LogicalAnd"
+  input: "bidirectional_rnn/fw/fw/while/Less"
+  input: "bidirectional_rnn/fw/fw/while/Less_1"
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/LoopCond"
+  op: "LoopCond"
+  input: "bidirectional_rnn/fw/fw/while/LogicalAnd"
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Switch"
+  op: "Switch"
+  input: "bidirectional_rnn/fw/fw/while/Merge"
+  input: "bidirectional_rnn/fw/fw/while/LoopCond"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/while/Merge"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Switch_1"
+  op: "Switch"
+  input: "bidirectional_rnn/fw/fw/while/Merge_1"
+  input: "bidirectional_rnn/fw/fw/while/LoopCond"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/while/Merge_1"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Switch_2"
+  op: "Switch"
+  input: "bidirectional_rnn/fw/fw/while/Merge_2"
+  input: "bidirectional_rnn/fw/fw/while/LoopCond"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/while/Merge_2"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Switch_3"
+  op: "Switch"
+  input: "bidirectional_rnn/fw/fw/while/Merge_3"
+  input: "bidirectional_rnn/fw/fw/while/LoopCond"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/while/Merge_3"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Identity"
+  op: "Identity"
+  input: "bidirectional_rnn/fw/fw/while/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Identity_1"
+  op: "Identity"
+  input: "bidirectional_rnn/fw/fw/while/Switch_1:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Identity_2"
+  op: "Identity"
+  input: "bidirectional_rnn/fw/fw/while/Switch_2:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Identity_3"
+  op: "Identity"
+  input: "bidirectional_rnn/fw/fw/while/Switch_3:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/add/y"
+  op: "Const"
+  input: "^bidirectional_rnn/fw/fw/while/Identity"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/add"
+  op: "Add"
+  input: "bidirectional_rnn/fw/fw/while/Identity"
+  input: "bidirectional_rnn/fw/fw/while/add/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/TensorArrayReadV3"
+  op: "TensorArrayReadV3"
+  input: "bidirectional_rnn/fw/fw/while/TensorArrayReadV3/Enter"
+  input: "bidirectional_rnn/fw/fw/while/Identity_1"
+  input: "bidirectional_rnn/fw/fw/while/TensorArrayReadV3/Enter_1"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/TensorArrayReadV3/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/fw/TensorArray_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_RESOURCE
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/TensorArrayReadV3/Enter_1"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/fw/TensorArrayUnstack/TensorArrayScatter/TensorArrayScatterV3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/basic_rnn_cell/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 8
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\214\030N\276x\363m>\340L\027>\0379\220\276\335\344\347\276o%\302\276\360\2374\2774\226=>\220\017Z=@\301\306<\330T\212\276\026D\274\276x\304!\277\354\314}>\205\332\n?:\357\246>\275\245\353\276\220\177b>\246Y\244>&s\302>\314\331|>\360:/\275\225\204\017\277\260\324\340\275"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/basic_rnn_cell/kernel/read"
+  op: "Identity"
+  input: "bidirectional_rnn/fw/basic_rnn_cell/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/basic_rnn_cell/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/basic_rnn_cell/bias/read"
+  op: "Identity"
+  input: "bidirectional_rnn/fw/basic_rnn_cell/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/concat/axis"
+  op: "Const"
+  input: "^bidirectional_rnn/fw/fw/while/Identity"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/concat"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/fw/fw/while/TensorArrayReadV3"
+  input: "bidirectional_rnn/fw/fw/while/Identity_3"
+  input: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/MatMul"
+  op: "MatMul"
+  input: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/concat"
+  input: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/MatMul/Enter"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/MatMul/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/BiasAdd"
+  op: "BiasAdd"
+  input: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/MatMul"
+  input: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/BiasAdd/Enter"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/BiasAdd/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/Relu"
+  op: "Relu"
+  input: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/TensorArrayWrite/TensorArrayWriteV3"
+  op: "TensorArrayWriteV3"
+  input: "bidirectional_rnn/fw/fw/while/TensorArrayWrite/TensorArrayWriteV3/Enter"
+  input: "bidirectional_rnn/fw/fw/while/Identity_1"
+  input: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/Relu"
+  input: "bidirectional_rnn/fw/fw/while/Identity_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/while/basic_rnn_cell/Relu"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/TensorArrayWrite/TensorArrayWriteV3/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/fw/fw/TensorArray"
+  attr {
+    key: "T"
+    value {
+      type: DT_RESOURCE
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/while/basic_rnn_cell/Relu"
+      }
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/fw/fw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/add_1/y"
+  op: "Const"
+  input: "^bidirectional_rnn/fw/fw/while/Identity"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/add_1"
+  op: "Add"
+  input: "bidirectional_rnn/fw/fw/while/Identity_1"
+  input: "bidirectional_rnn/fw/fw/while/add_1/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/NextIteration"
+  op: "NextIteration"
+  input: "bidirectional_rnn/fw/fw/while/add"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/NextIteration_1"
+  op: "NextIteration"
+  input: "bidirectional_rnn/fw/fw/while/add_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/NextIteration_2"
+  op: "NextIteration"
+  input: "bidirectional_rnn/fw/fw/while/TensorArrayWrite/TensorArrayWriteV3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/NextIteration_3"
+  op: "NextIteration"
+  input: "bidirectional_rnn/fw/fw/while/basic_rnn_cell/Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Exit_2"
+  op: "Exit"
+  input: "bidirectional_rnn/fw/fw/while/Switch_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/while/Exit_3"
+  op: "Exit"
+  input: "bidirectional_rnn/fw/fw/while/Switch_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayStack/TensorArraySizeV3"
+  op: "TensorArraySizeV3"
+  input: "bidirectional_rnn/fw/fw/TensorArray"
+  input: "bidirectional_rnn/fw/fw/while/Exit_2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/TensorArray"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayStack/range/start"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/TensorArray"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayStack/range/delta"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/TensorArray"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayStack/range"
+  op: "Range"
+  input: "bidirectional_rnn/fw/fw/TensorArrayStack/range/start"
+  input: "bidirectional_rnn/fw/fw/TensorArrayStack/TensorArraySizeV3"
+  input: "bidirectional_rnn/fw/fw/TensorArrayStack/range/delta"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/TensorArray"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/TensorArrayStack/TensorArrayGatherV3"
+  op: "TensorArrayGatherV3"
+  input: "bidirectional_rnn/fw/fw/TensorArray"
+  input: "bidirectional_rnn/fw/fw/TensorArrayStack/range"
+  input: "bidirectional_rnn/fw/fw/while/Exit_2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/fw/fw/TensorArray"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "element_shape"
+    value {
+      shape {
+        dim {
+          size: 1
+        }
+        dim {
+          size: 3
+        }
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/Rank_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/range_1/start"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/range_1/delta"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/range_1"
+  op: "Range"
+  input: "bidirectional_rnn/fw/fw/range_1/start"
+  input: "bidirectional_rnn/fw/fw/Rank_1"
+  input: "bidirectional_rnn/fw/fw/range_1/delta"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/concat_2/values_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/concat_2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/concat_2"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/fw/fw/concat_2/values_0"
+  input: "bidirectional_rnn/fw/fw/range_1"
+  input: "bidirectional_rnn/fw/fw/concat_2/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/fw/fw/transpose_1"
+  op: "Transpose"
+  input: "bidirectional_rnn/fw/fw/TensorArrayStack/TensorArrayGatherV3"
+  input: "bidirectional_rnn/fw/fw/concat_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tperm"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/ReverseV2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/ReverseV2"
+  op: "ReverseV2"
+  input: "in_0/read"
+  input: "bidirectional_rnn/bw/ReverseV2/axis"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/Rank"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/range/start"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/range/delta"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/range"
+  op: "Range"
+  input: "bidirectional_rnn/bw/bw/range/start"
+  input: "bidirectional_rnn/bw/bw/Rank"
+  input: "bidirectional_rnn/bw/bw/range/delta"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/concat/values_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/concat"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/bw/bw/concat/values_0"
+  input: "bidirectional_rnn/bw/bw/range"
+  input: "bidirectional_rnn/bw/bw/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/transpose"
+  op: "Transpose"
+  input: "bidirectional_rnn/bw/ReverseV2"
+  input: "bidirectional_rnn/bw/bw/concat"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tperm"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/concat"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/Const"
+  input: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/Const_1"
+  input: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/zeros/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/zeros"
+  op: "Fill"
+  input: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/concat"
+  input: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/zeros/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "index_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/Shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\004\000\000\000\001\000\000\000\005\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/strided_slice"
+  op: "StridedSlice"
+  input: "bidirectional_rnn/bw/bw/Shape"
+  input: "bidirectional_rnn/bw/bw/strided_slice/stack"
+  input: "bidirectional_rnn/bw/bw/strided_slice/stack_1"
+  input: "bidirectional_rnn/bw/bw/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/time"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArray"
+  op: "TensorArrayV3"
+  input: "bidirectional_rnn/bw/bw/strided_slice"
+  attr {
+    key: "clear_after_read"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "dynamic_size"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "element_shape"
+    value {
+      shape {
+        dim {
+          size: 1
+        }
+        dim {
+          size: 3
+        }
+      }
+    }
+  }
+  attr {
+    key: "identical_element_shapes"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "tensor_array_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/dynamic_rnn/output_0"
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArray_1"
+  op: "TensorArrayV3"
+  input: "bidirectional_rnn/bw/bw/strided_slice"
+  attr {
+    key: "clear_after_read"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "dynamic_size"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "element_shape"
+    value {
+      shape {
+        dim {
+          size: 1
+        }
+        dim {
+          size: 5
+        }
+      }
+    }
+  }
+  attr {
+    key: "identical_element_shapes"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "tensor_array_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/dynamic_rnn/input_0"
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayUnstack/Shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\004\000\000\000\001\000\000\000\005\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayUnstack/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayUnstack/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayUnstack/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayUnstack/strided_slice"
+  op: "StridedSlice"
+  input: "bidirectional_rnn/bw/bw/TensorArrayUnstack/Shape"
+  input: "bidirectional_rnn/bw/bw/TensorArrayUnstack/strided_slice/stack"
+  input: "bidirectional_rnn/bw/bw/TensorArrayUnstack/strided_slice/stack_1"
+  input: "bidirectional_rnn/bw/bw/TensorArrayUnstack/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayUnstack/range/start"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayUnstack/range/delta"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayUnstack/range"
+  op: "Range"
+  input: "bidirectional_rnn/bw/bw/TensorArrayUnstack/range/start"
+  input: "bidirectional_rnn/bw/bw/TensorArrayUnstack/strided_slice"
+  input: "bidirectional_rnn/bw/bw/TensorArrayUnstack/range/delta"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayUnstack/TensorArrayScatter/TensorArrayScatterV3"
+  op: "TensorArrayScatterV3"
+  input: "bidirectional_rnn/bw/bw/TensorArray_1"
+  input: "bidirectional_rnn/bw/bw/TensorArrayUnstack/range"
+  input: "bidirectional_rnn/bw/bw/transpose"
+  input: "bidirectional_rnn/bw/bw/TensorArray_1:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/transpose"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/Maximum/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/Maximum"
+  op: "Maximum"
+  input: "bidirectional_rnn/bw/bw/Maximum/x"
+  input: "bidirectional_rnn/bw/bw/strided_slice"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/Minimum"
+  op: "Minimum"
+  input: "bidirectional_rnn/bw/bw/strided_slice"
+  input: "bidirectional_rnn/bw/bw/Maximum"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/iteration_counter"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/bw/while/iteration_counter"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Enter_1"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/bw/time"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Enter_2"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/bw/TensorArray:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Enter_3"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/bw/BasicRNNCellZeroState/zeros"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Merge"
+  op: "Merge"
+  input: "bidirectional_rnn/bw/bw/while/Enter"
+  input: "bidirectional_rnn/bw/bw/while/NextIteration"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Merge_1"
+  op: "Merge"
+  input: "bidirectional_rnn/bw/bw/while/Enter_1"
+  input: "bidirectional_rnn/bw/bw/while/NextIteration_1"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Merge_2"
+  op: "Merge"
+  input: "bidirectional_rnn/bw/bw/while/Enter_2"
+  input: "bidirectional_rnn/bw/bw/while/NextIteration_2"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Merge_3"
+  op: "Merge"
+  input: "bidirectional_rnn/bw/bw/while/Enter_3"
+  input: "bidirectional_rnn/bw/bw/while/NextIteration_3"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Less"
+  op: "Less"
+  input: "bidirectional_rnn/bw/bw/while/Merge"
+  input: "bidirectional_rnn/bw/bw/while/Less/Enter"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Less/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/bw/strided_slice"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Less_1"
+  op: "Less"
+  input: "bidirectional_rnn/bw/bw/while/Merge_1"
+  input: "bidirectional_rnn/bw/bw/while/Less_1/Enter"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Less_1/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/bw/Minimum"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/LogicalAnd"
+  op: "LogicalAnd"
+  input: "bidirectional_rnn/bw/bw/while/Less"
+  input: "bidirectional_rnn/bw/bw/while/Less_1"
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/LoopCond"
+  op: "LoopCond"
+  input: "bidirectional_rnn/bw/bw/while/LogicalAnd"
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Switch"
+  op: "Switch"
+  input: "bidirectional_rnn/bw/bw/while/Merge"
+  input: "bidirectional_rnn/bw/bw/while/LoopCond"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/while/Merge"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Switch_1"
+  op: "Switch"
+  input: "bidirectional_rnn/bw/bw/while/Merge_1"
+  input: "bidirectional_rnn/bw/bw/while/LoopCond"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/while/Merge_1"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Switch_2"
+  op: "Switch"
+  input: "bidirectional_rnn/bw/bw/while/Merge_2"
+  input: "bidirectional_rnn/bw/bw/while/LoopCond"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/while/Merge_2"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Switch_3"
+  op: "Switch"
+  input: "bidirectional_rnn/bw/bw/while/Merge_3"
+  input: "bidirectional_rnn/bw/bw/while/LoopCond"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/while/Merge_3"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Identity"
+  op: "Identity"
+  input: "bidirectional_rnn/bw/bw/while/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Identity_1"
+  op: "Identity"
+  input: "bidirectional_rnn/bw/bw/while/Switch_1:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Identity_2"
+  op: "Identity"
+  input: "bidirectional_rnn/bw/bw/while/Switch_2:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Identity_3"
+  op: "Identity"
+  input: "bidirectional_rnn/bw/bw/while/Switch_3:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/add/y"
+  op: "Const"
+  input: "^bidirectional_rnn/bw/bw/while/Identity"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/add"
+  op: "Add"
+  input: "bidirectional_rnn/bw/bw/while/Identity"
+  input: "bidirectional_rnn/bw/bw/while/add/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/TensorArrayReadV3"
+  op: "TensorArrayReadV3"
+  input: "bidirectional_rnn/bw/bw/while/TensorArrayReadV3/Enter"
+  input: "bidirectional_rnn/bw/bw/while/Identity_1"
+  input: "bidirectional_rnn/bw/bw/while/TensorArrayReadV3/Enter_1"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/TensorArrayReadV3/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/bw/TensorArray_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_RESOURCE
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/TensorArrayReadV3/Enter_1"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/bw/TensorArrayUnstack/TensorArrayScatter/TensorArrayScatterV3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/basic_rnn_cell/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 8
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "f\253\356>\005\336<?\324\305\'\277\007B7?\324\333\007\277\333m\227\276n\213\303>\272[\217>\244\302)\277\206m\267>\022\325\367>IT\305\276p\276\337=F:\227>\375\270\213\276\200\014\253;\"\222\237\276)\333\026?\232\207\350>\324\262.\276=\035\307\276\323\000\010\277\013/\037\277\276\035\007\277"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/basic_rnn_cell/kernel/read"
+  op: "Identity"
+  input: "bidirectional_rnn/bw/basic_rnn_cell/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/basic_rnn_cell/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/basic_rnn_cell/bias/read"
+  op: "Identity"
+  input: "bidirectional_rnn/bw/basic_rnn_cell/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/concat/axis"
+  op: "Const"
+  input: "^bidirectional_rnn/bw/bw/while/Identity"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/concat"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/bw/bw/while/TensorArrayReadV3"
+  input: "bidirectional_rnn/bw/bw/while/Identity_3"
+  input: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/MatMul"
+  op: "MatMul"
+  input: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/concat"
+  input: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/MatMul/Enter"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/MatMul/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/BiasAdd"
+  op: "BiasAdd"
+  input: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/MatMul"
+  input: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/BiasAdd/Enter"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/BiasAdd/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/Relu"
+  op: "Relu"
+  input: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3"
+  op: "TensorArrayWriteV3"
+  input: "bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3/Enter"
+  input: "bidirectional_rnn/bw/bw/while/Identity_1"
+  input: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/Relu"
+  input: "bidirectional_rnn/bw/bw/while/Identity_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/while/basic_rnn_cell/Relu"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3/Enter"
+  op: "Enter"
+  input: "bidirectional_rnn/bw/bw/TensorArray"
+  attr {
+    key: "T"
+    value {
+      type: DT_RESOURCE
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/while/basic_rnn_cell/Relu"
+      }
+    }
+  }
+  attr {
+    key: "frame_name"
+    value {
+      s: "bidirectional_rnn/bw/bw/while/while_context"
+    }
+  }
+  attr {
+    key: "is_constant"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "parallel_iterations"
+    value {
+      i: 32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/add_1/y"
+  op: "Const"
+  input: "^bidirectional_rnn/bw/bw/while/Identity"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/add_1"
+  op: "Add"
+  input: "bidirectional_rnn/bw/bw/while/Identity_1"
+  input: "bidirectional_rnn/bw/bw/while/add_1/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/NextIteration"
+  op: "NextIteration"
+  input: "bidirectional_rnn/bw/bw/while/add"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/NextIteration_1"
+  op: "NextIteration"
+  input: "bidirectional_rnn/bw/bw/while/add_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/NextIteration_2"
+  op: "NextIteration"
+  input: "bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/NextIteration_3"
+  op: "NextIteration"
+  input: "bidirectional_rnn/bw/bw/while/basic_rnn_cell/Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Exit_2"
+  op: "Exit"
+  input: "bidirectional_rnn/bw/bw/while/Switch_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/while/Exit_3"
+  op: "Exit"
+  input: "bidirectional_rnn/bw/bw/while/Switch_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayStack/TensorArraySizeV3"
+  op: "TensorArraySizeV3"
+  input: "bidirectional_rnn/bw/bw/TensorArray"
+  input: "bidirectional_rnn/bw/bw/while/Exit_2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/TensorArray"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayStack/range/start"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/TensorArray"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayStack/range/delta"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/TensorArray"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayStack/range"
+  op: "Range"
+  input: "bidirectional_rnn/bw/bw/TensorArrayStack/range/start"
+  input: "bidirectional_rnn/bw/bw/TensorArrayStack/TensorArraySizeV3"
+  input: "bidirectional_rnn/bw/bw/TensorArrayStack/range/delta"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/TensorArray"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3"
+  op: "TensorArrayGatherV3"
+  input: "bidirectional_rnn/bw/bw/TensorArray"
+  input: "bidirectional_rnn/bw/bw/TensorArrayStack/range"
+  input: "bidirectional_rnn/bw/bw/while/Exit_2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@bidirectional_rnn/bw/bw/TensorArray"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "element_shape"
+    value {
+      shape {
+        dim {
+          size: 1
+        }
+        dim {
+          size: 3
+        }
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/Rank_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/range_1/start"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/range_1/delta"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/range_1"
+  op: "Range"
+  input: "bidirectional_rnn/bw/bw/range_1/start"
+  input: "bidirectional_rnn/bw/bw/Rank_1"
+  input: "bidirectional_rnn/bw/bw/range_1/delta"
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/concat_2/values_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/concat_2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/concat_2"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/bw/bw/concat_2/values_0"
+  input: "bidirectional_rnn/bw/bw/range_1"
+  input: "bidirectional_rnn/bw/bw/concat_2/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "bidirectional_rnn/bw/bw/transpose_1"
+  op: "Transpose"
+  input: "bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3"
+  input: "bidirectional_rnn/bw/bw/concat_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tperm"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "ReverseV2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "ReverseV2"
+  op: "ReverseV2"
+  input: "bidirectional_rnn/bw/bw/transpose_1"
+  input: "ReverseV2/axis"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "concat"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/fw/fw/transpose_1"
+  input: "ReverseV2"
+  input: "concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "concat_1"
+  op: "ConcatV2"
+  input: "bidirectional_rnn/fw/fw/while/Exit_3"
+  input: "bidirectional_rnn/bw/bw/while/Exit_3"
+  input: "concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+library {
+}
