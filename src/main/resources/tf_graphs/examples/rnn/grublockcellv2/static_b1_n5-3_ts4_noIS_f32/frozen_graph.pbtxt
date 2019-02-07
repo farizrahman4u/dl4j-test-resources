@@ -1,0 +1,476 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 1
+          }
+          dim {
+            size: 4
+          }
+          dim {
+            size: 5
+          }
+        }
+        tensor_content: "~^G?L\033M?\236p9?\220ol>\356%:?X\2708><q\001?b|d?\224\316\013?\314al?P@\257=,5K?\326\271(?\3566\016?`u#>0\024\236>\240{\036>\240h\360>\222o~?v|\034?"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "unstack"
+  op: "Unpack"
+  input: "in_0/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "num"
+    value {
+      i: 4
+    }
+  }
+}
+node {
+  name: "rnn/GRUBlockCellV2ZeroState/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "rnn/GRUBlockCellV2ZeroState/Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "rnn/GRUBlockCellV2ZeroState/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/GRUBlockCellV2ZeroState/concat"
+  op: "ConcatV2"
+  input: "rnn/GRUBlockCellV2ZeroState/Const"
+  input: "rnn/GRUBlockCellV2ZeroState/Const_1"
+  input: "rnn/GRUBlockCellV2ZeroState/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "rnn/GRUBlockCellV2ZeroState/zeros/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/GRUBlockCellV2ZeroState/zeros"
+  op: "Fill"
+  input: "rnn/GRUBlockCellV2ZeroState/concat"
+  input: "rnn/GRUBlockCellV2ZeroState/zeros/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "index_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/gates/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 8
+          }
+          dim {
+            size: 6
+          }
+        }
+        tensor_content: "\032\360~\276@&\206\276Vn\025?h\244(>\343\220\002\277\262\270\303\276\350\367\022?X\017\224\276&\250\317\276\260}\002\275\010\217\207\275h7\331\276\230\340\035\276l/\374>\274\265\272>l\033\266>\302\377!?\010\210\t\277\370+M>t\233\001\277\334\243\377>\014x\001\276\274\317S\276\273*\312\276\240{\326>\000\300+\2758\245\322>p\244\203\275\322t\254>4\222\032\277\264\356\230\276\2701\333=B\034\n\277=\013\207\276Ht\372=,\330\212>\204u\323\276\214\032;>x\306M\276\230Cj\276t0\370>Xh\314>\215o\357\276\3408\311>\340\361\356\276\271\222\261\276L\255\210>\222\277O\276"
+      }
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/gates/kernel/read"
+  op: "Identity"
+  input: "rnn/gru_cell/gates/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/gates/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 6
+          }
+        }
+        tensor_content: "\000\000\200?\000\000\200?\000\000\200?\000\000\200?\000\000\200?\000\000\200?"
+      }
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/gates/bias/read"
+  op: "Identity"
+  input: "rnn/gru_cell/gates/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/candidate/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 8
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\254\374\036\277\302\264\213>=\361\005?\277j\016\277)\204\003\277\026\301\317>\246\022\223>\000R\213\275Z\213.\277ZK\376>\235@\014\277\000.\344\274\365},?p\377P>\220\336\n>9\213$?\274\336w>\014\230\226\276&\364\250>\333t\016? =\375\274h\025\310\275\333\332\022?\rB\307\276"
+      }
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/candidate/kernel/read"
+  op: "Identity"
+  input: "rnn/gru_cell/candidate/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/candidate/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/candidate/bias/read"
+  op: "Identity"
+  input: "rnn/gru_cell/candidate/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/GRUBlockCell"
+  op: "GRUBlockCell"
+  input: "unstack"
+  input: "rnn/GRUBlockCellV2ZeroState/zeros"
+  input: "rnn/gru_cell/gates/kernel/read"
+  input: "rnn/gru_cell/candidate/kernel/read"
+  input: "rnn/gru_cell/gates/bias/read"
+  input: "rnn/gru_cell/candidate/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/GRUBlockCell_1"
+  op: "GRUBlockCell"
+  input: "unstack:1"
+  input: "rnn/gru_cell/GRUBlockCell:3"
+  input: "rnn/gru_cell/gates/kernel/read"
+  input: "rnn/gru_cell/candidate/kernel/read"
+  input: "rnn/gru_cell/gates/bias/read"
+  input: "rnn/gru_cell/candidate/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/GRUBlockCell_2"
+  op: "GRUBlockCell"
+  input: "unstack:2"
+  input: "rnn/gru_cell/GRUBlockCell_1:3"
+  input: "rnn/gru_cell/gates/kernel/read"
+  input: "rnn/gru_cell/candidate/kernel/read"
+  input: "rnn/gru_cell/gates/bias/read"
+  input: "rnn/gru_cell/candidate/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "rnn/gru_cell/GRUBlockCell_3"
+  op: "GRUBlockCell"
+  input: "unstack:3"
+  input: "rnn/gru_cell/GRUBlockCell_2:3"
+  input: "rnn/gru_cell/gates/kernel/read"
+  input: "rnn/gru_cell/candidate/kernel/read"
+  input: "rnn/gru_cell/gates/bias/read"
+  input: "rnn/gru_cell/candidate/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "concat"
+  op: "ConcatV2"
+  input: "rnn/gru_cell/GRUBlockCell:3"
+  input: "rnn/gru_cell/GRUBlockCell_1:3"
+  input: "rnn/gru_cell/GRUBlockCell_2:3"
+  input: "rnn/gru_cell/GRUBlockCell_3:3"
+  input: "concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "concat_1"
+  op: "Identity"
+  input: "rnn/gru_cell/GRUBlockCell_3:3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+library {
+}
