@@ -1,0 +1,787 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 4
+          }
+          dim {
+            size: 2
+          }
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "~^G?L\033M?\236p9?\220ol>\356%:?X\2708><q\001?b|d?\224\316\013?\314al?P@\257=,5K?\326\271(?\3566\016?`u#>0\024\236>"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "ReverseV2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "ReverseV2"
+  op: "ReverseV2"
+  input: "in_0/read"
+  input: "ReverseV2/axis"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 5
+          }
+          dim {
+            size: 12
+          }
+        }
+        tensor_content: "\020\275\343>\332\240\003?\250b\243>\244\257\362>\336|\217>\215\024\335\276.\017\240\2766i\315>\202Q<\276\240-d\275!\320\351\276\200V)\275$\212\345>\324=\014\277\356s\365\276^\013\\\276\254y\331\275j\0140\276\360\000F\276\344\260\353\275$m\r\277h\r\017>\3446\320\275(-\334\276\014::\276\200t\333>\264\231\270\276\310I\322>\260/\250\275\250O\006\276\010>\325>\234P\014?`3\000\275\2523\355\276\255\r\025\277\233\353\376\276PX\022?\364\326\017\277\200\315\345>\r\203\026\277\270#\306\275\302\305\270\276@\324)>\200+\354<\220|\010\275!C\232\276\322e\353\276W\365\310\276\230\360\250=\204!\241>fH\305\276&\263\002?\243C\361\2764\310\327>\240\251\323>hQ\217>Bw\024?\350\216\312>V\030\277>r\363\316>"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/kernel/read"
+  op: "Identity"
+  input: "lstm_fused_cell/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@lstm_fused_cell/kernel"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 12
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/bias/read"
+  op: "Identity"
+  input: "lstm_fused_cell/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@lstm_fused_cell/bias"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/w_i_diag"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "(\257e?\020\013\243\276\314\314n\277"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/w_i_diag/read"
+  op: "Identity"
+  input: "lstm_fused_cell/w_i_diag"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@lstm_fused_cell/w_i_diag"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/w_f_diag"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\310\223k?(\003\341\276`^M\277"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/w_f_diag/read"
+  op: "Identity"
+  input: "lstm_fused_cell/w_f_diag"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@lstm_fused_cell/w_f_diag"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/w_o_diag"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "4\024m\277(\247\260>`%r?"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/w_o_diag/read"
+  op: "Identity"
+  input: "lstm_fused_cell/w_o_diag"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@lstm_fused_cell/w_o_diag"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\002\000\000\000\003\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/zeros/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/zeros"
+  op: "Fill"
+  input: "lstm_fused_cell/stack"
+  input: "lstm_fused_cell/zeros/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "index_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/ToInt64/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 4
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/ToInt64"
+  op: "Cast"
+  input: "lstm_fused_cell/ToInt64/x"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_INT64
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Truncate"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/BlockLSTM"
+  op: "BlockLSTM"
+  input: "lstm_fused_cell/ToInt64"
+  input: "ReverseV2"
+  input: "lstm_fused_cell/zeros"
+  input: "lstm_fused_cell/zeros"
+  input: "lstm_fused_cell/kernel/read"
+  input: "lstm_fused_cell/w_i_diag/read"
+  input: "lstm_fused_cell/w_f_diag/read"
+  input: "lstm_fused_cell/w_o_diag/read"
+  input: "lstm_fused_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "cell_clip"
+    value {
+      f: -1.0
+    }
+  }
+  attr {
+    key: "forget_bias"
+    value {
+      f: 1.0
+    }
+  }
+  attr {
+    key: "use_peephole"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/strided_slice"
+  op: "StridedSlice"
+  input: "lstm_fused_cell/BlockLSTM:1"
+  input: "lstm_fused_cell/strided_slice/stack"
+  input: "lstm_fused_cell/strided_slice/stack_1"
+  input: "lstm_fused_cell/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/strided_slice_1/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/strided_slice_1/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/strided_slice_1/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "lstm_fused_cell/strided_slice_1"
+  op: "StridedSlice"
+  input: "lstm_fused_cell/BlockLSTM:6"
+  input: "lstm_fused_cell/strided_slice_1/stack"
+  input: "lstm_fused_cell/strided_slice_1/stack_1"
+  input: "lstm_fused_cell/strided_slice_1/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "ReverseV2_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "ReverseV2_1"
+  op: "ReverseV2"
+  input: "lstm_fused_cell/BlockLSTM:6"
+  input: "ReverseV2_1/axis"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "concat"
+  op: "ConcatV2"
+  input: "lstm_fused_cell/strided_slice"
+  input: "lstm_fused_cell/strided_slice_1"
+  input: "concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+library {
+}

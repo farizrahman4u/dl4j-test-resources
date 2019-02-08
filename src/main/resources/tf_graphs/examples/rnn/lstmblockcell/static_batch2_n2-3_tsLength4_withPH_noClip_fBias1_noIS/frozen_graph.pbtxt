@@ -1,0 +1,747 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 2
+          }
+          dim {
+            size: 4
+          }
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "~^G?L\033M?\236p9?\220ol>\356%:?X\2708><q\001?b|d?\224\316\013?\314al?P@\257=,5K?\326\271(?\3566\016?`u#>0\024\236>"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "unstack"
+  op: "Unpack"
+  input: "in_0/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "num"
+    value {
+      i: 4
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/concat"
+  op: "ConcatV2"
+  input: "rnn/LSTMBlockCellZeroState/Const"
+  input: "rnn/LSTMBlockCellZeroState/Const_1"
+  input: "rnn/LSTMBlockCellZeroState/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/zeros/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/zeros"
+  op: "Fill"
+  input: "rnn/LSTMBlockCellZeroState/concat"
+  input: "rnn/LSTMBlockCellZeroState/zeros/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "index_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/Const_4"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/Const_5"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/concat_1"
+  op: "ConcatV2"
+  input: "rnn/LSTMBlockCellZeroState/Const_4"
+  input: "rnn/LSTMBlockCellZeroState/Const_5"
+  input: "rnn/LSTMBlockCellZeroState/concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/zeros_1/Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/LSTMBlockCellZeroState/zeros_1"
+  op: "Fill"
+  input: "rnn/LSTMBlockCellZeroState/concat_1"
+  input: "rnn/LSTMBlockCellZeroState/zeros_1/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "index_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 5
+          }
+          dim {
+            size: 12
+          }
+        }
+        tensor_content: "\301\276\n\277\\\232\377\276\007\212\252\276\340*\217\275\262\365\215\276`\210@><\275\236\276:\006\221\276\343H\216\276N\272\262>M\202\213\276\274&\362>\274\234\254>\356p\231>\205\016\016\277lA\371\275\t\252\205\276\244\255\231>\003N\216\276\000\311u<\320\326W\275^!\201>\211\026\014\2778\273\021?TFZ>\264\323G\2768\0376>\230\354^>\310\2538\276n\325H\276\370\217\252\276\300\035\245\274\200\367\001\275\020\276\317\2764#\230\276\242\004\026?\272\315\274\276@)\231>p{#\275t6\262>x1\001>D\323\220\276\034r\027\277F\335\376\276\230X\203>\324>\321>v \245>\250\003\203>\260\311S\275\260\022\331=\304q\256\276\260G\372> SY>\27406>\376\246\231>Hk\233> 7\223\275\310\347\r\277\010\231\245\275\230\220z>"
+      }
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/kernel/read"
+  op: "Identity"
+  input: "rnn/lstm_cell/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 12
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/bias/read"
+  op: "Identity"
+  input: "rnn/lstm_cell/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/zeros"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/LSTMBlockCell"
+  op: "LSTMBlockCell"
+  input: "unstack"
+  input: "rnn/LSTMBlockCellZeroState/zeros"
+  input: "rnn/LSTMBlockCellZeroState/zeros_1"
+  input: "rnn/lstm_cell/kernel/read"
+  input: "rnn/lstm_cell/zeros"
+  input: "rnn/lstm_cell/zeros"
+  input: "rnn/lstm_cell/zeros"
+  input: "rnn/lstm_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "cell_clip"
+    value {
+      f: -1.0
+    }
+  }
+  attr {
+    key: "forget_bias"
+    value {
+      f: 1.0
+    }
+  }
+  attr {
+    key: "use_peephole"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/zeros_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/LSTMBlockCell_1"
+  op: "LSTMBlockCell"
+  input: "unstack:1"
+  input: "rnn/lstm_cell/LSTMBlockCell:1"
+  input: "rnn/lstm_cell/LSTMBlockCell:6"
+  input: "rnn/lstm_cell/kernel/read"
+  input: "rnn/lstm_cell/zeros_1"
+  input: "rnn/lstm_cell/zeros_1"
+  input: "rnn/lstm_cell/zeros_1"
+  input: "rnn/lstm_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "cell_clip"
+    value {
+      f: -1.0
+    }
+  }
+  attr {
+    key: "forget_bias"
+    value {
+      f: 1.0
+    }
+  }
+  attr {
+    key: "use_peephole"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/zeros_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/LSTMBlockCell_2"
+  op: "LSTMBlockCell"
+  input: "unstack:2"
+  input: "rnn/lstm_cell/LSTMBlockCell_1:1"
+  input: "rnn/lstm_cell/LSTMBlockCell_1:6"
+  input: "rnn/lstm_cell/kernel/read"
+  input: "rnn/lstm_cell/zeros_2"
+  input: "rnn/lstm_cell/zeros_2"
+  input: "rnn/lstm_cell/zeros_2"
+  input: "rnn/lstm_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "cell_clip"
+    value {
+      f: -1.0
+    }
+  }
+  attr {
+    key: "forget_bias"
+    value {
+      f: 1.0
+    }
+  }
+  attr {
+    key: "use_peephole"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/zeros_3"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "rnn/lstm_cell/LSTMBlockCell_3"
+  op: "LSTMBlockCell"
+  input: "unstack:3"
+  input: "rnn/lstm_cell/LSTMBlockCell_2:1"
+  input: "rnn/lstm_cell/LSTMBlockCell_2:6"
+  input: "rnn/lstm_cell/kernel/read"
+  input: "rnn/lstm_cell/zeros_3"
+  input: "rnn/lstm_cell/zeros_3"
+  input: "rnn/lstm_cell/zeros_3"
+  input: "rnn/lstm_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "cell_clip"
+    value {
+      f: -1.0
+    }
+  }
+  attr {
+    key: "forget_bias"
+    value {
+      f: 1.0
+    }
+  }
+  attr {
+    key: "use_peephole"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "concat"
+  op: "ConcatV2"
+  input: "rnn/lstm_cell/LSTMBlockCell:6"
+  input: "rnn/lstm_cell/LSTMBlockCell_1:6"
+  input: "rnn/lstm_cell/LSTMBlockCell_2:6"
+  input: "rnn/lstm_cell/LSTMBlockCell_3:6"
+  input: "concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "concat_1"
+  op: "ConcatV2"
+  input: "rnn/lstm_cell/LSTMBlockCell_3:1"
+  input: "rnn/lstm_cell/LSTMBlockCell_3:6"
+  input: "concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+library {
+}

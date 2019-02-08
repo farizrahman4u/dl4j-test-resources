@@ -1,0 +1,2642 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 1
+          }
+          dim {
+            size: 4
+          }
+          dim {
+            size: 5
+          }
+        }
+        tensor_content: "~^G?L\033M?\236p9?\220ol>\356%:?X\2708><q\001?b|d?\224\316\013?\314al?P@\257=,5K?\326\271(?\3566\016?`u#>0\024\236>\240{\036>\240h\360>\222o~?v|\034?"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "in_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 1
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\006\220E?\202\226m?\346\013|?"
+      }
+    }
+  }
+}
+node {
+  name: "in_1/read"
+  op: "Identity"
+  input: "in_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_1"
+      }
+    }
+  }
+}
+node {
+  name: "in_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 1
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\270\263q?\342~\030?\026\355]?"
+      }
+    }
+  }
+}
+node {
+  name: "in_2/read"
+  op: "Identity"
+  input: "in_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_2"
+      }
+    }
+  }
+}
+node {
+  name: "in_3"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 1
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "t\357h?x\262\t?\000.\023?"
+      }
+    }
+  }
+}
+node {
+  name: "in_3/read"
+  op: "Identity"
+  input: "in_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_3"
+      }
+    }
+  }
+}
+node {
+  name: "in_4"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 1
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\252\"_?b\217\\?4a\246>"
+      }
+    }
+  }
+}
+node {
+  name: "in_4/read"
+  op: "Identity"
+  input: "in_4"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_4"
+      }
+    }
+  }
+}
+node {
+  name: "unstack"
+  op: "Unpack"
+  input: "in_0/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "num"
+    value {
+      i: 4
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 8
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "b\016\215>\272\360\271>8\013I>.\306\224>\3504\307=,nW>\232\305\362>\004f$\277F\227,\277\335p<?\354\241I\276\330\333_>/\364\021\27763\361>M/\r?\324M\353\276\212=\264>\035w\227\276\230kI>0\227\024\276r\213\364>b\370\277\276*\360\356>\312o\250\276"
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/kernel/read"
+  op: "Identity"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/bias/read"
+  op: "Identity"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat"
+  op: "ConcatV2"
+  input: "unstack"
+  input: "in_1/read"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/MatMul"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/BiasAdd"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/MatMul"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_1"
+  op: "ConcatV2"
+  input: "unstack:1"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/MatMul_1"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_1"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/BiasAdd_1"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/MatMul_1"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid_1"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/BiasAdd_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_2"
+  op: "ConcatV2"
+  input: "unstack:2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid_1"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_2/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/MatMul_2"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_2"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/BiasAdd_2"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/MatMul_2"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid_2"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/BiasAdd_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_3/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_3"
+  op: "ConcatV2"
+  input: "unstack:3"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid_2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_3/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/MatMul_3"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/concat_3"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/BiasAdd_3"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/MatMul_3"
+  input: "stack_bidirectional_rnn/cell_0/fw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid_3"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/BiasAdd_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 8
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\264fQ>\006M\347>VM\235\276R\203\230>:\024\262\276\005\203\023?\330M\241\275\235|$?\352\026\222>`1|\275\204\002\t\276\020\275\266\275\366\272\302>R\362\263\276B\002\027\277@\265\363<\000T\327=\320\346\246=\377\0263\277\\\332\020>\302\342\357\276G\"\354\276`\335\326=\340\025\273\275"
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/kernel/read"
+  op: "Identity"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/bias/read"
+  op: "Identity"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat"
+  op: "ConcatV2"
+  input: "unstack:3"
+  input: "in_2/read"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/MatMul"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/BiasAdd"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/MatMul"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_1"
+  op: "ConcatV2"
+  input: "unstack:2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/MatMul_1"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_1"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/BiasAdd_1"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/MatMul_1"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid_1"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/BiasAdd_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_2"
+  op: "ConcatV2"
+  input: "unstack:1"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid_1"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_2/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/MatMul_2"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_2"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/BiasAdd_2"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/MatMul_2"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid_2"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/BiasAdd_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_3/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_3"
+  op: "ConcatV2"
+  input: "unstack"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid_2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_3/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/MatMul_3"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/concat_3"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/BiasAdd_3"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/MatMul_3"
+  input: "stack_bidirectional_rnn/cell_0/bw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid_3"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/BiasAdd_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/concat"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid_3"
+  input: "stack_bidirectional_rnn/cell_0/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/concat_1"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid_1"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid_2"
+  input: "stack_bidirectional_rnn/cell_0/concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/concat_2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/concat_2"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid_2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid_1"
+  input: "stack_bidirectional_rnn/cell_0/concat_2/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/concat_3/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_0/concat_3"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid_3"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid"
+  input: "stack_bidirectional_rnn/cell_0/concat_3/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 9
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000R>;l\313q\276=M \277Ke\r\277\240\366u=\265\210\010?\326\276\177\276\201\256\250\276\343`\000\277\000&7>\032X\301>\330\242\376\275W\203\262\276Lg\t>\252y\330>\260\314I\276\037[\307\276\034s\000>2\004\374>(\200!\277\340\347\235=\353_\025?\372\377\305\276\376\005!\277\000\212#\275\252\\\263\276c\240\006?"
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/kernel/read"
+  op: "Identity"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/bias/read"
+  op: "Identity"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/concat"
+  input: "in_3/read"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/MatMul"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/BiasAdd"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/MatMul"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_1"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/concat_1"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/MatMul_1"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_1"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/BiasAdd_1"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/MatMul_1"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid_1"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/BiasAdd_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_2"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/concat_2"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid_1"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_2/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/MatMul_2"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_2"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/BiasAdd_2"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/MatMul_2"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid_2"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/BiasAdd_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_3/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_3"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/concat_3"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid_2"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_3/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/MatMul_3"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/concat_3"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/BiasAdd_3"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/MatMul_3"
+  input: "stack_bidirectional_rnn/cell_1/fw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid_3"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/BiasAdd_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/kernel"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 9
+          }
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "C\211,?\007\251\032? \031 \277\177\324\242\276\276i\326>\270\001\327=\3204M\276\0336\025\277\030\314\216\276R3\236\276\326\263\325\276\256m\371>\026\\\243>\221\311\022\277I\214,?+\215\324\276`\377\275\274%\031\207\276\004\261`\276?\324*?p &\277z!/\277\220F\205>1\3012?\355\311.\277\362m\327>\350,\351="
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/kernel/read"
+  op: "Identity"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/kernel"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/bias"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/bias/read"
+  op: "Identity"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/bias"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/concat_3"
+  input: "in_4/read"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/MatMul"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/BiasAdd"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/MatMul"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_1"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/concat_2"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/MatMul_1"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_1"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/BiasAdd_1"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/MatMul_1"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid_1"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/BiasAdd_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_2"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/concat_1"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid_1"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_2/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/MatMul_2"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_2"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/BiasAdd_2"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/MatMul_2"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid_2"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/BiasAdd_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_3/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_3"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/concat"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid_2"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_3/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/MatMul_3"
+  op: "MatMul"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/concat_3"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/kernel/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/BiasAdd_3"
+  op: "BiasAdd"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/MatMul_3"
+  input: "stack_bidirectional_rnn/cell_1/bw/basic_rnn_cell/bias/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid_3"
+  op: "Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/BiasAdd_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/concat"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid_3"
+  input: "stack_bidirectional_rnn/cell_1/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/concat_1"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid_1"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid_2"
+  input: "stack_bidirectional_rnn/cell_1/concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/concat_2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/concat_2"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid_2"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid_1"
+  input: "stack_bidirectional_rnn/cell_1/concat_2/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/concat_3/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "stack_bidirectional_rnn/cell_1/concat_3"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid_3"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid"
+  input: "stack_bidirectional_rnn/cell_1/concat_3/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "concat"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_1/concat"
+  input: "stack_bidirectional_rnn/cell_1/concat_1"
+  input: "stack_bidirectional_rnn/cell_1/concat_2"
+  input: "stack_bidirectional_rnn/cell_1/concat_3"
+  input: "concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "concat_1/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "concat_1"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/fw/fw/basic_rnn_cell/Sigmoid_3"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/fw/fw/basic_rnn_cell/Sigmoid_3"
+  input: "concat_1/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "concat_2/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "concat_2"
+  op: "ConcatV2"
+  input: "stack_bidirectional_rnn/cell_0/cell_0/bw/bw/basic_rnn_cell/Sigmoid_3"
+  input: "stack_bidirectional_rnn/cell_1/cell_1/bw/bw/basic_rnn_cell/Sigmoid_3"
+  input: "concat_2/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+library {
+}
