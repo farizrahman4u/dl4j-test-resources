@@ -1,0 +1,11 @@
+l2_normalize.0 float32
+import____Variable.0 float32
+import____Variable____read.0 float32
+import____l2_normalize____x.0 float32
+import____l2_normalize____Square.0 float32
+import____l2_normalize____Const.0 int32
+import____l2_normalize____Sum.0 float32
+import____l2_normalize____Maximum____y.0 float32
+import____l2_normalize____Maximum.0 float32
+import____l2_normalize____Rsqrt.0 float32
+import____l2_normalize.0 float32
