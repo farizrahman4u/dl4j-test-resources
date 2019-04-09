@@ -70,6 +70,8 @@ public class LSTMCharModellingExample {
 
 # CustomLayerExample
 
+Note that the custom layer JSON needs to be modified to point to the file in the unit tests: org.deeplearning4j.regressiontest.customlayer100a.CustomLayer
+
 ```
 public class CustomLayerExample {
 
