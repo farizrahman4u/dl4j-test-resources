@@ -12,3 +12,6 @@ for d in dtypes:
     print(path)
     np.save(path, array)
 ```
+
+
+## Code to reproduce .npz arrays
