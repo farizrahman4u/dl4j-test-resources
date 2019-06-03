@@ -1,2 +1,2 @@
 ImageTensor uint8
-graph/SemanticPredictions int64
+SemanticPredictions int64
