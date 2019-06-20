@@ -1,0 +1,77 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 5
+          }
+          dim {
+            size: 5
+          }
+        }
+        tensor_content: "\0366\371@\0201\000A\306\314\347@\272\305\023@j\257\350@n\346\346?\213\315\241@\275\315\016A9\302\256@ \275\023Ad\020[?w\002\376@L\350\322@\252\304\261@\270R\314?<\231E@\210\032\306?dA\226@\273\005\037A\224\233\303@\340v\330@\232`\346?\024\375\327@f\276\017@Hb\002?"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "FakeQuantWithMinMaxArgs"
+  op: "FakeQuantWithMinMaxArgs"
+  input: "in_0/read"
+  attr {
+    key: "max"
+    value {
+      f: 5.0
+    }
+  }
+  attr {
+    key: "min"
+    value {
+      f: 1.0
+    }
+  }
+  attr {
+    key: "narrow_range"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "num_bits"
+    value {
+      i: 4
+    }
+  }
+}
+library {
+}
