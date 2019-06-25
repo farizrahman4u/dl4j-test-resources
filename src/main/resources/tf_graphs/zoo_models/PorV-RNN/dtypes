@@ -1,0 +1,4 @@
+input_1:0 int64
+dense_2/Sigmoid:0 float32
+input_1:0 int64
+dense_2/Sigmoid:0 float32
