@@ -1,0 +1,131 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 20
+          }
+        }
+        tensor_content: "\000\000\000\000\315\314L=\315\314\314=\232\231\031>\315\314L>\000\000\200>\232\231\231>43\263>\316\314\314>hf\346>\001\000\000?\316\314\014?\233\231\031?hf&?533?\002\000@?\317\314L?\234\231Y?iff?63s?"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "QuantizeV2/min_range"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "QuantizeV2/max_range"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "QuantizeV2"
+  op: "QuantizeV2"
+  input: "in_0/read"
+  input: "QuantizeV2/min_range"
+  input: "QuantizeV2/max_range"
+  attr {
+    key: "T"
+    value {
+      type: DT_QUINT16
+    }
+  }
+  attr {
+    key: "mode"
+    value {
+      s: "MIN_FIRST"
+    }
+  }
+  attr {
+    key: "round_mode"
+    value {
+      s: "HALF_AWAY_FROM_ZERO"
+    }
+  }
+}
+node {
+  name: "Dequantize"
+  op: "Dequantize"
+  input: "QuantizeV2"
+  input: "QuantizeV2:1"
+  input: "QuantizeV2:2"
+  attr {
+    key: "T"
+    value {
+      type: DT_QUINT16
+    }
+  }
+  attr {
+    key: "mode"
+    value {
+      s: "MIN_FIRST"
+    }
+  }
+}
+library {
+}
