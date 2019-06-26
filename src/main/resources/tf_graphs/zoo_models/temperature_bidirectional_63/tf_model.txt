@@ -1,0 +1,3 @@
+https://deeplearning4jblob.blob.core.windows.net/testresources/temperature_bidirectional_63_frozenmodel.pb
+33417cc4d468de41cb5ba8716b303bc0
+temperature_bidirectional_63_frozenmodel.pb

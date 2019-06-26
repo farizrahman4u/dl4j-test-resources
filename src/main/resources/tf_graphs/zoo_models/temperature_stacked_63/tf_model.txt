@@ -1,0 +1,3 @@
+https://deeplearning4jblob.blob.core.windows.net/testresources/temperature_stacked_63_frozenmodel.pb
+732c532bcaa82f2de9eabafd6358d37b
+temperature_stacked_63_frozenmodel.pb
