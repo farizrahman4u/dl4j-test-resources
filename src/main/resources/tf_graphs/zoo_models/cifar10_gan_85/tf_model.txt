@@ -1,3 +1,3 @@
 https://deeplearning4jblob.blob.core.windows.net/testresources/cifar10_gan_85_frozenmodel.pb
-241e71face1a3e7705a89a100f50292f
+8059a37373468b66eb5bc8eacab8c097
 cifar10_gan_85_frozenmodel.pb
