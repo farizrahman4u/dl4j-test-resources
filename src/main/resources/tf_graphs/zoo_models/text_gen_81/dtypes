@@ -1,0 +1,2 @@
+lstm_1_input:0 float64
+dense_1_1/Softmax:0 float32
