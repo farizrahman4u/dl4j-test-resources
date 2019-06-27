@@ -141,7 +141,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_QUINT8
+      type: DT_QINT32
     }
   }
   attr {
@@ -187,7 +187,7 @@ node {
   attr {
     key: "T"
     value {
-      type: DT_QUINT8
+      type: DT_QINT32
     }
   }
   attr {
