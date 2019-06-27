@@ -1,0 +1,10 @@
+Prod.0 uint8
+in_0.0 float32
+in_0____read.0 float32
+QuantizeV2____min_range.0 float32
+QuantizeV2____max_range.0 float32
+QuantizeV2.0 quint8
+QuantizeV2.1 float32
+QuantizeV2.2 float32
+Prod____reduction_indices.0 int32
+Prod.0 quint8
