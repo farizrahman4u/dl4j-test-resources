@@ -1,0 +1,121 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.7787855863571167
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "QuantizeAndDequantizeV2/input_min"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "QuantizeAndDequantizeV2/input_max"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "QuantizeAndDequantizeV2"
+  op: "QuantizeAndDequantizeV2"
+  input: "in_0/read"
+  input: "QuantizeAndDequantizeV2/input_min"
+  input: "QuantizeAndDequantizeV2/input_max"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "num_bits"
+    value {
+      i: 8
+    }
+  }
+  attr {
+    key: "range_given"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "round_mode"
+    value {
+      s: "HALF_TO_EVEN"
+    }
+  }
+  attr {
+    key: "signed_input"
+    value {
+      b: true
+    }
+  }
+}
+library {
+}
