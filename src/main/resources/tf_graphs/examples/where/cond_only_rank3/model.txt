@@ -178,6 +178,101 @@ node {
       type: DT_BOOL
     }
   }
+  attr {
+    key: "Truncate"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "in_0"
+  op: "VariableV2"
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 2
+        }
+        dim {
+          size: 3
+        }
+        dim {
+          size: 4
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "in_0/Assign"
+  op: "Assign"
+  input: "in_0"
+  input: "Cast"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
 }
 node {
   name: "Add/y"
@@ -203,7 +298,7 @@ node {
 node {
   name: "Add"
   op: "Add"
-  input: "Cast"
+  input: "in_0/read"
   input: "Add/y"
   attr {
     key: "T"
@@ -251,10 +346,174 @@ node {
   }
 }
 node {
+  name: "Variable/IsVariableInitialized"
+  op: "IsVariableInitialized"
+  input: "in_0"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Variable/cond/Switch"
+  op: "Switch"
+  input: "Variable/IsVariableInitialized"
+  input: "Variable/IsVariableInitialized"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "Variable/cond/switch_t"
+  op: "Identity"
+  input: "Variable/cond/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "Variable/cond/switch_f"
+  op: "Identity"
+  input: "Variable/cond/Switch"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "Variable/cond/pred_id"
+  op: "Identity"
+  input: "Variable/IsVariableInitialized"
+  attr {
+    key: "T"
+    value {
+      type: DT_BOOL
+    }
+  }
+}
+node {
+  name: "Variable/cond/read"
+  op: "Identity"
+  input: "Variable/cond/read/Switch:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Variable/cond/read/Switch"
+  op: "RefSwitch"
+  input: "in_0"
+  input: "Variable/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "Variable/cond/Switch_1"
+  op: "Switch"
+  input: "Cast"
+  input: "Variable/cond/pred_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@Cast"
+      }
+    }
+  }
+}
+node {
+  name: "Variable/cond/Merge"
+  op: "Merge"
+  input: "Variable/cond/Switch_1"
+  input: "Variable/cond/read"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "in_0/read_Variable"
+  op: "Identity"
+  input: "Variable/cond/Merge"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "Add_Variable"
+  op: "Add"
+  input: "in_0/read_Variable"
+  input: "Add/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
   name: "Variable/Assign"
   op: "Assign"
   input: "Variable"
-  input: "Add"
+  input: "Add_Variable"
   attr {
     key: "T"
     value {
@@ -304,7 +563,7 @@ node {
 node {
   name: "Where"
   op: "Where"
-  input: "Cast"
+  input: "in_0/read"
   attr {
     key: "T"
     value {
@@ -313,7 +572,7 @@ node {
   }
 }
 node {
-  name: "save/Const"
+  name: "save/filename/input"
   op: "Const"
   attr {
     key: "dtype"
@@ -334,6 +593,42 @@ node {
   }
 }
 node {
+  name: "save/filename"
+  op: "PlaceholderWithDefault"
+  input: "save/filename/input"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+      }
+    }
+  }
+}
+node {
+  name: "save/Const"
+  op: "PlaceholderWithDefault"
+  input: "save/filename"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+      }
+    }
+  }
+}
+node {
   name: "save/SaveV2/tensor_names"
   op: "Const"
   attr {
@@ -349,10 +644,11 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 1
+            size: 2
           }
         }
         string_val: "Variable"
+        string_val: "in_0"
       }
     }
   }
@@ -373,9 +669,10 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 1
+            size: 2
           }
         }
+        string_val: ""
         string_val: ""
       }
     }
@@ -388,10 +685,12 @@ node {
   input: "save/SaveV2/tensor_names"
   input: "save/SaveV2/shape_and_slices"
   input: "Variable"
+  input: "in_0"
   attr {
     key: "dtypes"
     value {
       list {
+        type: DT_FLOAT
         type: DT_FLOAT
       }
     }
@@ -434,10 +733,11 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 1
+            size: 2
           }
         }
         string_val: "Variable"
+        string_val: "in_0"
       }
     }
   }
@@ -459,9 +759,10 @@ node {
         dtype: DT_STRING
         tensor_shape {
           dim {
-            size: 1
+            size: 2
           }
         }
+        string_val: ""
         string_val: ""
       }
     }
@@ -478,6 +779,7 @@ node {
     key: "dtypes"
     value {
       list {
+        type: DT_FLOAT
         type: DT_FLOAT
       }
     }
@@ -516,15 +818,49 @@ node {
   }
 }
 node {
+  name: "save/Assign_1"
+  op: "Assign"
+  input: "in_0"
+  input: "save/RestoreV2:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
   name: "save/restore_all"
   op: "NoOp"
   input: "^save/Assign"
+  input: "^save/Assign_1"
 }
 node {
   name: "init"
   op: "NoOp"
   input: "^Variable/Assign"
+  input: "^in_0/Assign"
 }
 versions {
-  producer: 26
+  producer: 38
 }
