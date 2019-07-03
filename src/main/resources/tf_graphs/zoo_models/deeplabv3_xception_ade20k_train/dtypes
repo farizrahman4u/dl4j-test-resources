@@ -1,0 +1,2 @@
+ImageTensor:0 float32
+SemanticPredictions:0 int64
