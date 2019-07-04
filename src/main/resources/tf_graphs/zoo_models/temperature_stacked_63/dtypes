@@ -1,0 +1,2 @@
+gru_1_input:0 float64
+dense_1_1/BiasAdd:0 float32

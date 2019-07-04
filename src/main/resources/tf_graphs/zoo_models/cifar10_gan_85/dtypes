@@ -1,0 +1,2 @@
+input_1:0 float64
+conv2d_4/Tanh:0 float32

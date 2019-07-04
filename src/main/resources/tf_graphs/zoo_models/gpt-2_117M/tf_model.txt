@@ -1,0 +1,3 @@
+https://deeplearning4jblob.blob.core.windows.net/testresources/gpt-2_117M_frozenmodel.pb
+757654dc70b89cd200ec42f0ba47c51f
+gpt-2_117M_frozenmodel.pb

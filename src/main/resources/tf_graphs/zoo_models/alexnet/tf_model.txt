@@ -1,0 +1,3 @@
+https://deeplearning4jblob.blob.core.windows.net/testresources/alexnet_frozenmodel.pb
+3727c06a142656a97bdc8fabe351950a
+alexnet_frozenmodel.pb

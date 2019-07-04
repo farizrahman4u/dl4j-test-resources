@@ -1,0 +1,3 @@
+https://deeplearning4jblob.blob.core.windows.net/testresources/text_gen_81_frozenmodel.pb
+0ff7845178afef43ff8a735aa2e9c71b
+text_gen_81_frozenmodel.pb

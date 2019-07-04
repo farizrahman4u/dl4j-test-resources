@@ -1,0 +1,3 @@
+https://deeplearning4jblob.blob.core.windows.net/testresources/deeplabv3_xception_ade20k_train_frozenmodel.pb
+ebaf7d4410dfd30bbc05e1fc1a07020b
+deeplabv3_xception_ade20k_train_frozenmodel.pb
