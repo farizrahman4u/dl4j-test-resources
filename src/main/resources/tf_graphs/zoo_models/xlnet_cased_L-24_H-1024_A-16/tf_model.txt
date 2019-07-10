@@ -1,0 +1,3 @@
+https://deeplearning4jblob.blob.core.windows.net/testresources/xlnet_cased_L-24_H-1024_A-16_frozenmodel.pb
+0fd9f1c6345d93b14dad96cf8a9b2129
+xlnet_cased_L-24_H-1024_A-16_frozenmodel.pb
