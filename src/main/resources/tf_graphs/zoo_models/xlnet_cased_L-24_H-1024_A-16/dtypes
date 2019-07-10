@@ -1,0 +1,4 @@
+input:0 int32
+input_1:0 int32
+input_2:0 float64
+model_2/classification_imdb/logit/BiasAdd:0 float32
