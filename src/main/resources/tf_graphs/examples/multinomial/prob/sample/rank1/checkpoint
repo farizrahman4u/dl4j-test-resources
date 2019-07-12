@@ -1,0 +1,2 @@
+model_checkpoint_path: "/dl4j-test-resources/src/main/resources/tf_graphs/examples/multinormal/prob/sample/rank1/data-all-1000"
+all_model_checkpoint_paths: "/dl4j-test-resources/src/main/resources/tf_graphs/examples/multinormal/prob/sample/rank1/data-all-1000"
