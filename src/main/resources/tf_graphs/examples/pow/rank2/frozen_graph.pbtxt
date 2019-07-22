@@ -1,0 +1,106 @@
+node {
+  name: "in_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_DOUBLE
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_DOUBLE
+        tensor_shape {
+          dim {
+            size: 3
+          }
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "0m4\347\376y\315?\344\033;\004\236p\351?\026..t\357%\352? \306G>\322\023\247?\230\303\330E)\235\327?,5\313k\013\350\345?"
+      }
+    }
+  }
+}
+node {
+  name: "in_0/read"
+  op: "Identity"
+  input: "in_0"
+  attr {
+    key: "T"
+    value {
+      type: DT_DOUBLE
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_0"
+      }
+    }
+  }
+}
+node {
+  name: "in_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_DOUBLE
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_DOUBLE
+        tensor_shape {
+          dim {
+            size: 3
+          }
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\010Z\266\327\037@\306?l\331{-\346\013\354?\000\215j\032X\302\302?\220n\013\207~\272\311?\300w(S\352\206\265?\322*\334\341p\002\343?"
+      }
+    }
+  }
+}
+node {
+  name: "in_1/read"
+  op: "Identity"
+  input: "in_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_DOUBLE
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@in_1"
+      }
+    }
+  }
+}
+node {
+  name: "Pow"
+  op: "Pow"
+  input: "in_0/read"
+  input: "in_1/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_DOUBLE
+    }
+  }
+}
+library {
+}
