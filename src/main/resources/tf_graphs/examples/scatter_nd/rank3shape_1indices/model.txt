@@ -445,7 +445,7 @@ node {
   }
 }
 node {
-  name: "save/Const"
+  name: "save/filename/input"
   op: "Const"
   attr {
     key: "dtype"
@@ -461,6 +461,42 @@ node {
         tensor_shape {
         }
         string_val: "model"
+      }
+    }
+  }
+}
+node {
+  name: "save/filename"
+  op: "PlaceholderWithDefault"
+  input: "save/filename/input"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+      }
+    }
+  }
+}
+node {
+  name: "save/Const"
+  op: "PlaceholderWithDefault"
+  input: "save/filename"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
       }
     }
   }
