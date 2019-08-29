@@ -387,6 +387,8 @@ public class CharacterIterator implements DataSetIterator {
 
 Note that the custom layer JSON needs to be modified to point to the file in the unit tests: org.deeplearning4j.regressiontest.customlayer100a.CustomLayer
 
+Can easily add dtypes, should add bflaot16 for beta5.
+
 ```java
 import java.io.DataOutputStream;
 import java.io.File;
