@@ -57,7 +57,7 @@ node {
   attr {
     key: "compute_uv"
     value {
-      b: true
+      b: false
     }
   }
   attr {
@@ -68,22 +68,9 @@ node {
   }
 }
 node {
-  name: "add"
-  op: "Add"
+  name: "Abs"
+  op: "Abs"
   input: "Svd"
-  input: "Svd:1"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "add_1"
-  op: "Add"
-  input: "add"
-  input: "Svd:2"
   attr {
     key: "T"
     value {

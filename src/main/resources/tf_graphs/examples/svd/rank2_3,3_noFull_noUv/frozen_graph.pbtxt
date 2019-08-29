@@ -67,5 +67,16 @@ node {
     }
   }
 }
+node {
+  name: "Abs"
+  op: "Abs"
+  input: "Svd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
 library {
 }

@@ -1,9 +1,11 @@
+Abs.0 float32
+Abs_1.0 float32
+Abs_2.0 float32
 in_0.0 float32
 in_0____read.0 float32
 Svd.0 float32
 Svd.1 float32
 Svd.2 float32
-ExpandDims____dim.0 int32
-ExpandDims.0 float32
-add.0 float32
-add_1.0 float32
+Abs.0 float32
+Abs_1.0 float32
+Abs_2.0 float32
