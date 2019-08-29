@@ -896,7 +896,7 @@ public class HouseNumberDetection {
             log.info("Build model...");
 
             ComputationGraph pretrained = (ComputationGraph) TinyYOLO.builder().build().initPretrained();
-            INDArray priors = Nd4j.create(priorBoxes);
+            INDArray priors = Nd4j.create(priorBoxes).castTo(DataType.FLOAT);
 
             FineTuneConfiguration fineTuneConf = new FineTuneConfiguration.Builder()
                     .seed(seed)
